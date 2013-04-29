@@ -1,4 +1,11 @@
 Onemap::Application.routes.draw do
+
+  root to: "home#index"
+
+  get "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+  get "logout" => "home#logout", :as => "logout"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 ruby '2.0.0'
 
-gem 'sqlite3'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 
@@ -25,7 +22,6 @@ group :development do
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
-  gem 'rails-erd'
 end
 
 group :production do
@@ -47,9 +43,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'devise'
+gem 'sorcery'
 
 gem 'simple_form'
 gem 'cocoon'
