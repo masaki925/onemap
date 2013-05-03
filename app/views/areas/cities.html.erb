@@ -2,7 +2,7 @@
 
 <% @cities.each do |city| %>
   <ul>
-    <li><%= city.name %></li>
+    <li><%= link_to city.name, city %></li>
   </ul>
 <% end %>
 </table>

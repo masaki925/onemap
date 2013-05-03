@@ -1,15 +1,29 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "cities/cities" %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @city.name %>
-</p>
+<p id="city_name"><%= @city.name %></p>
 
 <p>
   <b>Country code:</b>
   <%= @city.country_code %>
 </p>
 
+<div class="row-fluid">
+  <div class="span3">
+    <button class="restaurant">restaurant</button>
+    <button class="hotel">hotel</button>
+    <div class="spots">
+      <%= hidden_field_tag :latitude, '35.712072' %>
+      <%= hidden_field_tag :longitude, '139.79494999999997' %>
+    </div>
+  </div>
+  <div class="span9">
+    <div id="map_canvas"></div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>
