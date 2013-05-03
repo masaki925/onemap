@@ -58,12 +58,10 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    debugger (1.5.0)
+    debugger-linecache (1.2.0)
+    debugger2 (1.0.0.beta2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.0)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
     dotenv (0.7.0)
     erubis (2.7.0)
@@ -236,7 +234,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 3.2.1)
   compass-rails
-  debugger
+  debugger2
   factory_girl_rails
   faker
   foreman

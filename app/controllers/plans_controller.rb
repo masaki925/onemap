@@ -1,4 +1,6 @@
 class PlansController < ApplicationController
+  before_filter :require_authentication, except: [:index, :show]
+
   # GET /plans
   # GET /plans.json
   def index
@@ -41,6 +43,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(params[:plan])
+    @plan.user = current_user
 
     respond_to do |format|
       if @plan.save

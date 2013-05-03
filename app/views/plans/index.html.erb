@@ -12,12 +12,10 @@
 
 <% @plans.each do |plan| %>
   <tr>
-    <td><%= plan.title %></td>
+    <td><%= link_to plan.title, plan %></td>
     <td><%= plan.start_datetime %></td>
     <td><%= plan.end_datetime %></td>
-    <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-    <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

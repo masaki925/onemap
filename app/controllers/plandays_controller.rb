@@ -1,15 +1,4 @@
 class PlandaysController < ApplicationController
-  # GET /plandays
-  # GET /plandays.json
-  def index
-    @plandays = Planday.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @plandays }
-    end
-  end
-
   # GET /plandays/1
   # GET /plandays/1.json
   def show
@@ -24,6 +13,7 @@ class PlandaysController < ApplicationController
   # GET /plandays/new
   # GET /plandays/new.json
   def new
+    @plan = Plan.find(params[:plan_id])
     @planday = Planday.new
 
     respond_to do |format|

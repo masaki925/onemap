@@ -1,4 +1,4 @@
-<%= form_for(@planday) do |f| %>
+<%= simple_form_for([@plan, @planday]) do |f| %>
   <% if @planday.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planday.errors.count, "error") %> prohibited this planday from being saved:</h2>
@@ -11,14 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :plan %><br />
-    <%= f.text_field :plan %>
-  </div>
-  <div class="field">
-    <%= f.label :day %><br />
-    <%= f.number_field :day %>
-  </div>
+  <%= f.input :plan %>
+  <%= f.input :day %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

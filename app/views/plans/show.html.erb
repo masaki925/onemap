@@ -6,15 +6,22 @@
 </p>
 
 <p>
-  <b>Start datetime:</b>
+  <b>Owner:</b>
+  <%= @plan.user.username %>
+</p>
+
+<p>
+  <b>Start:</b>
   <%= @plan.start_datetime %>
 </p>
 
 <p>
-  <b>End datetime:</b>
+  <b>End:</b>
   <%= @plan.end_datetime %>
 </p>
 
+<%= link_to "add day plan", new_plan_planday_path(@plan) %>
 
+<hr>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>

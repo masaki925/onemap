@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(:version => 20130503003608) do
 
   create_table "plans", :force => true do |t|
     t.string   "title",          :default => ""
-    t.datetime "start_datetime"
-    t.datetime "end_datetime"
+    t.integer  "user_id"
+    t.date     "start_datetime"
+    t.date     "end_datetime"
     t.boolean  "valid_f",        :default => true
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
