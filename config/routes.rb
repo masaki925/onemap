@@ -1,5 +1,11 @@
 Onemap::Application.routes.draw do
 
+  resources :spots
+
+
+  resources :plans
+
+
   root to: "home#index"
 
   get "oauth/callback" => "oauths#callback"
