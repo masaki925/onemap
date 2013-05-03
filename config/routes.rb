@@ -1,5 +1,7 @@
 Onemap::Application.routes.draw do
 
+  get "users" => "users#index"
+
   resources :plans, shallow: true do
     resources :plandays
   end
