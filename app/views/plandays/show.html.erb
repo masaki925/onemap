@@ -13,6 +13,14 @@
   <b>Day:</b>
   <%= @planday.day %>
 </p>
+
+<p>
+  <b>Spots:</b>
+  <% @planday.spots.each do |spot| %>
+    <li><%= spot.name %></li>
+  <% end %>
+</p>
+
 <div class="row-fluid">
   <div class="span3">
     <button class="restaurant">restaurant</button>
