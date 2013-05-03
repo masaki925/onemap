@@ -1,4 +1,6 @@
 class Planday < ActiveRecord::Base
   belongs_to :plan
-  attr_accessible :day
+  has_many :spots, through: :planday_spot
+
+  validates :day, presence: true
 end

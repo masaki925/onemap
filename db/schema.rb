@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20130503003608) do
   end
 
   create_table "planday_spots", :force => true do |t|
-    t.integer  "planday_id"
-    t.integer  "spot_id"
+    t.integer  "planday_id", :null => false
+    t.integer  "spot_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(:version => 20130503003608) do
   add_index "planday_spots", ["spot_id"], :name => "index_planday_spots_on_spot_id"
 
   create_table "plandays", :force => true do |t|
-    t.integer  "plan_id"
-    t.integer  "day"
+    t.integer  "plan_id",    :null => false
+    t.integer  "day",        :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(:version => 20130503003608) do
   add_index "plandays", ["plan_id"], :name => "index_plandays_on_plan_id"
 
   create_table "plans", :force => true do |t|
-    t.string   "title",          :default => ""
-    t.integer  "user_id"
+    t.string   "title",                            :null => false
+    t.integer  "user_id",                          :null => false
     t.date     "start_datetime"
     t.date     "end_datetime"
     t.boolean  "valid_f",        :default => true
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20130503003608) do
   end
 
   create_table "spots", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.string   "address"
     t.string   "tel"
     t.string   "station"

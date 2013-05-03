@@ -30,7 +30,10 @@ class PlandaysController < ApplicationController
   # POST /plandays
   # POST /plandays.json
   def create
+    @plan    = Plan.find(params[:plan_id])
     @planday = Planday.new(params[:planday])
+    @planday.plan = @plan
+    @planday.day  = @plan.plandays.size + 1
 
     respond_to do |format|
       if @planday.save

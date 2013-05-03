@@ -2,7 +2,7 @@
 
 <p>
   <b>Plan:</b>
-  <%= @planday.plan %>
+  <%= link_to @planday.plan.title, @planday.plan %>
 </p>
 
 <p>
@@ -12,4 +12,4 @@
 
 
 <%= link_to 'Edit', edit_planday_path(@planday) %> |
-<%= link_to 'Back', plandays_path %>
+<%= link_to 'Back', plan_path(@planday.plan) %>

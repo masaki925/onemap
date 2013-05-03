@@ -20,8 +20,13 @@
   <%= @plan.end_datetime %>
 </p>
 
+<hr>
+
+<% @plan.plandays.each do |planday| %>
+  <li> <%= link_to "day " + planday.day.to_s, planday %> </li>
+<% end %>
+
 <%= link_to "add day plan", new_plan_planday_path(@plan) %>
 
 <hr>
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>
+<%= link_to 'Edit', edit_plan_path(@plan) %>

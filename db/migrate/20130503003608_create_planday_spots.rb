@@ -1,8 +1,8 @@
 class CreatePlandaySpots < ActiveRecord::Migration
   def change
     create_table :planday_spots do |t|
-      t.references :planday
-      t.references :spot
+      t.references :planday, null:false
+      t.references :spot, null:false
 
       t.timestamps
     end

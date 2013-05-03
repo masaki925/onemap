@@ -1,8 +1,8 @@
 class CreatePlandays < ActiveRecord::Migration
   def change
     create_table :plandays do |t|
-      t.references :plan
-      t.integer :day
+      t.references :plan, null:false
+      t.integer :day, null:false
 
       t.timestamps
     end
