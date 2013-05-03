@@ -3,69 +3,116 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
   exports = this
+  mapOptions =
+    center: new google.maps.LatLng(-34.397, 150.644), # initialize
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  map = new google.maps.Map $('#map_canvas').get(0), mapOptions
+
+  markersArray = []
+  exports.infowindow = new google.maps.InfoWindow()
+  exports.service = new google.maps.places.PlacesService(map)
+  directionsDisplay = new google.maps.DirectionsRenderer()
+  directionsService = new google.maps.DirectionsService()
+  bounds = new google.maps.LatLngBounds()
+
+  clearOverlays = ->
+    if markersArray
+      for i of markersArray
+        markersArray[i].setMap null
+    markersArray.length = 0
+
+  createMarker = (place) ->
+    placeLoc = place.geometry.location
+    bounds.extend(placeLoc)
+    map.fitBounds(bounds)
+    photos = place.photos
+    marker = new google.maps.Marker
+      map: map,
+      position: placeLoc
+    markersArray.push(marker)
+    request =
+      reference: place.reference
+    exports.service.getDetails request, (details, status) ->
+      google.maps.event.addListener marker, 'click', ->
+        if details
+          exports.infowindow.setContent(
+            '<div class="infowindow">' +
+            '<span>' + details.name + '</span>' + '<br />' +
+            '<span>' + details.formatted_address + '</span>' + '<br />' +
+            '<span>' + details.website + '</span>' + '<br />' +
+            '<span>' + details.rating + '</span>' + '<br />' +
+            '<span>' + details.formatted_phone_number + '</span>' + '<br />' +
+            '<img src=' + photosURL(photos, details.icon) + '>' + '<br />' +
+            '<button class="addSpot">場所追加</button>' +
+            '</div>'
+          )
+        else
+          exports.infowindow.setContent(
+            place.name + '<button class="addSpot">場所追加</button>'
+          )
+        exports.infowindow.open map, this
+
+  $src = $('<li></li><button></button>')
+  createSideMenu = (place) ->
+    $item = $src.clone()
+    $item.text(place.name)
+    $('#spot-list').append($item)
+
+  photosURL = (photos, details) ->
+    if photos
+      return photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150})
+    else
+      return details
+
+  $('.span3').find('button.restaurant').click (e) ->
+    clearOverlays()
+    request =
+      location: exports.destination,
+      radius: '500',
+      types: ['restaurant']
+    exports.service.search request, (results, status) ->
+      if status is google.maps.places.PlacesServiceStatus.OK
+        for i in [0..results.length-1]
+           place = results[i]
+           createMarker(results[i])
+           createSideMenu(results[i])
+
+  $('.span3').find('button.sight').click (e) ->
+    clearOverlays()
+    request =
+      location: exports.destination,
+      radius: '500',
+      types: ['restaurant']
+    exports.service.search request, (results, status) ->
+      if status is google.maps.places.PlacesServiceStatus.OK
+        for i in [0..results.length-1]
+           place = results[i]
+           createMarker(results[i])
+           createSideMenu(results[i])
+
+  $('.span3').find('button.hotel').click (e) ->
+    clearOverlays()
+    request =
+      location: exports.destination,
+      radius: '500',
+      types: ['lodging']
+    exports.service.search request, (results, status) ->
+      if status is google.maps.places.PlacesServiceStatus.OK
+        for i in [0..results.length-1]
+           place = results[i]
+           createMarker(results[i])
+           createSideMenu(results[i])
+
+
 
   city_name = $("#city_name").text()
-
   geocoder = new google.maps.Geocoder()
   geocoder.geocode {'address': city_name}, (results, status) ->
     unless status == google.maps.GeocoderStatus.OK
-      alert('sorry, something wrong')
+      alert 'sorry, something wrong'
     else
-      city = results[0].geometry.location
-      mapOptions =
-        center: city,
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      map = new google.maps.Map $('#map_canvas').get(0), mapOptions
-
-      markersArray = []
-      exports.infowindow = new google.maps.InfoWindow()
-      exports.service = new google.maps.places.PlacesService(map)
-      exports.destination = city
-      bounds = new google.maps.LatLngBounds()
-
-      $('.span3').find('button.restaurant').click (e) ->
-        clearOverlays()
-        request =
-          location: exports.destination,
-          radius: '500',
-          types: ['restaurant']
-        exports.service.search request, (results, status) ->
-          if status is google.maps.places.PlacesServiceStatus.OK
-            for i in [0..results.length-1]
-               place = results[i]
-               createMarker(results[i])
-
-      $('.span3').find('button.hotel').click (e) ->
-        clearOverlays()
-        request =
-          location: exports.destination,
-          radius: '500',
-          types: ['lodging']
-        exports.service.search request, (results, status) ->
-          if status is google.maps.places.PlacesServiceStatus.OK
-            for i in [0..results.length-1]
-               place = results[i]
-               createMarker(results[i])
-
-      createMarker = (place) ->
-        placeLoc = place.geometry.location
-        bounds.extend(placeLoc)
-        map.fitBounds(bounds)
-        marker = new google.maps.Marker
-          map: map,
-          position: placeLoc
-        markersArray.push(marker)
-        request =
-          reference: place.reference
-        exports.service.getDetails request, (details, status) ->
-          google.maps.event.addListener marker, 'click', ->
-            exports.infowindow.setContent place.name
-            exports.infowindow.open map, this
-
-      clearOverlays = ->
-        if markersArray
-          for i of markersArray
-            markersArray[i].setMap null
-        markersArray.length = 0
+      destination = results[0].geometry.location
+      map.setCenter destination
+      exports.destination = destination
 
