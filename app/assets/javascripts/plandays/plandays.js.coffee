@@ -39,7 +39,7 @@ $ ->
       types: ['restaurant']
     exports.service.search request, (results, status) ->
       if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length]
+        for i in [0..results.length-1]
            place = results[i]
            createMarker(results[i])
 
@@ -51,7 +51,7 @@ $ ->
       types: ['restaurant']
     exports.service.search request, (results, status) ->
       if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length]
+        for i in [0..results.length-1]
            place = results[i]
            createMarker(results[i])
 
