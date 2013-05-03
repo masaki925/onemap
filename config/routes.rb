@@ -1,5 +1,8 @@
 Onemap::Application.routes.draw do
 
+  resources :plandays
+
+
   resources :spots
 
 

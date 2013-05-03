@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502232105) do
+ActiveRecord::Schema.define(:version => 20130503003608) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -20,6 +20,25 @@ ActiveRecord::Schema.define(:version => 20130502232105) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "planday_spots", :force => true do |t|
+    t.integer  "planday_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "planday_spots", ["planday_id"], :name => "index_planday_spots_on_planday_id"
+  add_index "planday_spots", ["spot_id"], :name => "index_planday_spots_on_spot_id"
+
+  create_table "plandays", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "day"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "plandays", ["plan_id"], :name => "index_plandays_on_plan_id"
 
   create_table "plans", :force => true do |t|
     t.string   "title",          :default => ""
