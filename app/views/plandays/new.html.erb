@@ -1,3 +1,7 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "plandays/plandays" %>
+<% end %>
+
 <h1>New day plan for <%= link_to @plan.title, plan_path(@plan) %></h1>
 <div class="row-fluid">
   <div class="span3">
@@ -13,5 +17,6 @@
     <div id="map_canvas"></div>
   </div>
 </div>
+
 <div id="spot-list">
 </div>

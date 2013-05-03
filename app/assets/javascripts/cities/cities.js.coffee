@@ -44,13 +44,10 @@ $ ->
             '<span>' + details.rating + '</span>' + '<br />' +
             '<span>' + details.formatted_phone_number + '</span>' + '<br />' +
             '<img src=' + photosURL(photos, details.icon) + '>' + '<br />' +
-            '<button class="addSpot">場所追加</button>' +
             '</div>'
           )
         else
-          exports.infowindow.setContent(
-            place.name + '<button class="addSpot">場所追加</button>'
-          )
+          exports.infowindow.setContent place.name
         exports.infowindow.open map, this
 
   $src = $('<li></li><button></button>')

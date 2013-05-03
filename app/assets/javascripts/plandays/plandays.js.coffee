@@ -43,6 +43,7 @@ $ ->
            place = results[i]
            createMarker(place)
 
+
   $('.span3').find('button.sight').click (e) ->
     clearOverlays()
     request =
@@ -103,6 +104,11 @@ $ ->
             place.name + '<button class="addSpot">場所追加</button>'
           )
         exports.infowindow.open map, this
+        $(".addSpot").on "click", (e) ->
+          li_elem = $("<li><span class='handle'>[drag]</span></li>")
+          li_elem.append( $("<input type='hidden' name='planday_spot[]' value='hoge'>" + e.target.parentNode.childNodes[0].textContent + "</input><span class='rmSpot'> [x]</span>") )
+          $("#new_spots").append( li_elem )
+
 
   photosURL = (photos, details) ->
     if photos
@@ -123,3 +129,4 @@ $ ->
     $item = $src.clone()
     $item.text(place.name)
     $('#spot-list').append($item)
+

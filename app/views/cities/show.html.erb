@@ -11,6 +11,8 @@
   <%= @city.country_code %>
 </p>
 
+<p><%= link_to "create plan", new_plan_path %></p>
+
 <div class="row-fluid">
   <div class="span3">
     <button class="restaurant">restaurant</button>
@@ -24,6 +26,8 @@
     <div id="map_canvas"></div>
   </div>
 </div>
+
+<div id="spot-list"></div>
 
 <%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>
