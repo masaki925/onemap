@@ -29,11 +29,18 @@
           </a>
           <a class="brand" href="/">Onemap</a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
+            <ul class="nav pull-left">
               <li><%= link_to "users", "/users"  %></li>
               <li><%= link_to "plans", "/plans"  %></li>
-              <li><%= link_to "plandays", "/plandays"  %></li>
               <li><%= link_to "spots", "/spots"  %></li>
+            </ul>
+            <ul class="nav pull-right">
+              <% if current_user %>
+                <li><a>Hello <%= current_user.username %></a></li>
+                <li><%= link_to "Log out", logout_path %></li>
+              <% else %>
+                <li><%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

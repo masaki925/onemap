@@ -1,12 +1,10 @@
 Onemap::Application.routes.draw do
 
-  resources :plandays
-
+  resources :plans, shallow: true do
+    resources :plandays
+  end
 
   resources :spots
-
-
-  resources :plans
 
 
   root to: "home#index"
