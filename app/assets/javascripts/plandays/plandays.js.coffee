@@ -41,7 +41,7 @@ $ ->
       if status is google.maps.places.PlacesServiceStatus.OK
         for i in [0..results.length-1]
            place = results[i]
-           createMarker(results[i])
+           createMarker(place)
 
   $('.span3').find('button.sight').click (e) ->
     clearOverlays()
@@ -53,7 +53,7 @@ $ ->
       if status is google.maps.places.PlacesServiceStatus.OK
         for i in [0..results.length-1]
            place = results[i]
-           createMarker(results[i])
+           createMarker(place)
 
   $('.span3').find('button.hotel').click (e) ->
     clearOverlays()
@@ -65,7 +65,7 @@ $ ->
       if status is google.maps.places.PlacesServiceStatus.OK
         for i in [0..results.length]
            place = results[i]
-           createMarker(results[i])
+           createMarker(place)
 
   directionsService.route request, (results, status) ->
     if status is google.maps.DirectionsStatus.OK
