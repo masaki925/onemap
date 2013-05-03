@@ -1,5 +1,11 @@
 <h2>Welcome to OneMap!</h2>
 <h3>create your plan</h3>
-<li><%= link_to "create plan", new_plan_path %></li>
+
+<%= form_tag cities_area_path, :method => 'get', :id => "areas_search" do %>
+  <%= hidden_field_tag :sort, params[:sort]%>
+  <%= select_tag "country", grouped_options_for_select( {'North America' => [['United States','US'], 'Canada'], 'Europe' => [] }) %>
+  <%= submit_tag "select city", :first_name => nil %>
+<% end %>
+
 <hr>
 <h3>view plans</h3>

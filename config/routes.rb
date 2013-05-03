@@ -1,4 +1,8 @@
 Onemap::Application.routes.draw do
+  resources :cities
+
+  get "areas/cities" => "areas#cities", :as => :cities_area
+  resources :areas
 
   get "users" => "users#index"
 
@@ -7,7 +11,6 @@ Onemap::Application.routes.draw do
   end
 
   resources :spots
-
 
   root to: "home#index"
 
