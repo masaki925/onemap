@@ -11,7 +11,16 @@
     </div>
   <% end %>
 
-  <div id="new_spots">ここにスポットを追加していく予定</div>
+  <div id="planday_spots">
+    <%= f.simple_fields_for :planday_spots, PlandaySpot.new do |planday_spot| %>
+      <%= render 'planday_spot_fields', :f => planday_spot %>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%= link_to_add_association 'add_planday_spot', f, :planday_spots %>
+  </div>
+  <hr>
 
   <div class="actions">
     <%= f.submit %>

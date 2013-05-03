@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.fields_for :spot, Spot.new do |spot| %>
+    <%= spot.input :name %>
+  <% end %>
+</div>
+

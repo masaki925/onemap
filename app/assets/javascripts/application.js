@@ -15,3 +15,4 @@
 //= require jquery.ui.datepicker
 //= require twitter/bootstrap
 //= require_directory .
+//= require cocoon
