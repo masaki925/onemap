@@ -21,7 +21,6 @@ $ ->
   spots.each (index) ->
     switch index
       when 0, spots.length - 1
-        console.log "0"
       else
         waypoints.push location:new google.maps.LatLng(spots.find("input#latitude")[index].value, spots.find("input#longitude")[index].value)
   exports.destination = new google.maps.LatLng(spots.find('input#latitude')[spots.length - 1].value, spots.find('input#longitude')[spots.length - 1].value)
@@ -77,19 +76,50 @@ $ ->
     placeLoc = place.geometry.location
     bounds.extend(placeLoc)
     map.fitBounds(bounds)
+    photos = place.photos
     marker = new google.maps.Marker
       map: map,
       position: placeLoc
     markersArray.push(marker)
+    createSideMenu(place)
     request =
       reference: place.reference
     exports.service.getDetails request, (details, status) ->
       google.maps.event.addListener marker, 'click', ->
-        exports.infowindow.setContent place.name
+        if details
+          exports.infowindow.setContent(
+            '<div class="infowindow">' +
+            '<span>' + details.name + '</span>' + '<br />' +
+            '<span>' + details.formatted_address + '</span>' + '<br />' +
+            '<span>' + details.website + '</span>' + '<br />' +
+            '<span>' + details.rating + '</span>' + '<br />' +
+            '<span>' + details.formatted_phone_number + '</span>' + '<br />' +
+            '<img src=' + photosURL(photos, details.icon) + '>' + '<br />' +
+            '<button class="addSpot">場所追加</button>' +
+            '</div>'
+          )
+        else
+          exports.infowindow.setContent(
+            place.name + '<button class="addSpot">場所追加</button>'
+          )
         exports.infowindow.open map, this
 
-  clearOverlays = ->
+  photosURL = (photos, details) ->
+    if photos
+      return photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150})
+    else
+      return details
+
+  clearOverlays =  ->
     if markersArray
       for i of markersArray
         markersArray[i].setMap null
     markersArray.length = 0
+    $('#spot-list').empty()
+
+
+  $src = $('<li></li><button></button>')
+  createSideMenu = (place) ->
+    $item = $src.clone()
+    $item.text(place.name)
+    $('#spot-list').append($item)

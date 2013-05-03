@@ -1,3 +1,17 @@
 <h1>New day plan for <%= link_to @plan.title, plan_path(@plan) %></h1>
-
-<%= render 'form' %>
+<div class="row-fluid">
+  <div class="span3">
+    <button class="restaurant">restaurant</button>
+    <button class="hotel">hotel</button>
+    <div class="spots">
+      <%= hidden_field_tag :latitude, '35.712072' %>
+      <%= hidden_field_tag :longitude, '139.79494999999997' %>
+    </div>
+    <%= render 'form' %>
+  </div>
+  <div class="span9">
+    <div id="map_canvas"></div>
+  </div>
+</div>
+<div id="spot-list">
+</div>
