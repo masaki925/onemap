@@ -148,7 +148,9 @@ $ ->
 
   $("#planday_spots").bind "cocoon:before-insert", (e, insertedItem) ->
     name = $(exports.infowindow.content).find("span.name")[0].textContent
-    $(insertedItem).find("input")[0].value = name
+    $(insertedItem).find("input").filter( ->
+      this.id.match(/.*_spot_attributes_name$/)
+    )[0].value = name
 
   $("#planday_spots").sortable
     axis: "y"
