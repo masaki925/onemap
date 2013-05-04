@@ -1,0 +1,174 @@
+
+
+body{
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    background: #FFFFFF;
+}
+
+input {
+    width: auto;
+}
+li{
+    list-style-type: none;
+}
+
+.btn{
+    border-radius: 10px;
+}
+
+.row{
+    margin-left:0;
+}
+.span12{
+    margin-left:0;
+}
+form{
+    margin: 0;
+}
+
+a:focus {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+a{
+    color: #4e7573
+}
+
+a:hover,
+a:focus {
+    color: #fedc5f;
+    text-decoration: underline;
+}
+
+div.navbar.navbar-fluid-top{
+    padding: 0;
+    margin: 0;
+}
+
+div.navbar-inner{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-inner {
+    padding: 0;
+    background: #4e7573;
+    background:url(../assets/logoBack.jpg);
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    border: none;
+}
+
+.navbar .brand {
+    padding: 0;
+    margin:-14px 20px 0 0;
+    font-size: 65px;
+    font-weight: 500;
+    color: #000000;
+
+    width: 229px;
+    height: 50px;
+    background:url(../assets/logo4.png);
+    background-size: 100% 100%;
+    text-indent: -9999px;
+    box-shadow: none;
+    border: none;
+}
+
+.navbar .nav > li > a {
+    padding: 0px 15px 10px 15px;
+    margin: 0 0 10px 0;
+    color: white;
+    font-size: 28px;
+    font-weight: 500;
+    text-shadow: 0px 0px 0px #ffffff;
+}
+
+ul.nav.pull-right > li > a{
+    padding: 0px 0px 10px 20px;
+}
+
+#topNav > li > input{
+    margin: 5px 15px 10px 0;
+    padding: 3px;
+}
+#topNav > li > a{
+    padding: 8px 0px 0px 40px;
+}
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+    color: #f7003e;
+    text-shadow: 0px 0px 2px #ffffff;
+}
+
+.activeNav{
+    background:url(../assets/activeTab.png);
+    background-size: 140px 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+
+.btn{
+    color: white;
+    text-shadow: 0px 0px 6px #72001a;
+
+    background-color: #e70033;
+    background-image: -moz-linear-gradient(top, #ff7a72, #e70033);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7a72), to(#e70033));
+    background-image: -webkit-linear-gradient(top, #ff7a72, #e70033);
+    background-image: -o-linear-gradient(top, #ff7a72, #e70033);
+    background-image: linear-gradient(to bottom, #ff7a72, #e70033);
+    background-repeat: repeat-x;
+    border-color: #c8002e #c8002e #a20026;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+    color: #fedc5f;
+    background-color: #fd7f77;
+    *background-color: #fd7f77;
+}
+
+.btn:active,
+.btn.active {
+    background-color: #fd7f77  \9;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #fedc5f;
+    background-position: 0 -50px;
+
+}
+
+div{
+}
+
+.mapButton{
+    text-shadow: 0px 0px 6px #385957;
+    background-image: linear-gradient(to bottom, #8ececc, #679a98);
+    background-repeat: repeat-x;
+    border-color: #4e7573 #4e7573 #3f615f;
+    border-top: none;
+}
+
+.mapButton:hover,
+.mapButton:focus,
+.mapButton:active,
+.mapButton.active,
+.mapButton.disabled,
+.mapButton[disabled],
+.mapButton:hover,
+.mapButton:focus {
+    color: #E70033;
+    text-shadow: 0px 0px 6px #FEDC5F;
+    background-color: #FEEEB4;
+}
