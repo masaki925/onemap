@@ -56,11 +56,7 @@ class PlandaysController < ApplicationController
 
     begin
       ActiveRecord::Base.transaction do
-        # TODO: avoid treat about complex add, sort, remove spot list for now.
-        @planday.planday_spots.map do |ps|
-          ps.position = -1
-          ps.save
-        end
+        @planday.clear_spot_positions
 
         if @planday.update_attributes(params[:planday])
           respond_to do |format|
@@ -70,8 +66,11 @@ class PlandaysController < ApplicationController
         end
       end
     rescue => ex
+      @plan          = @planday.plan
+      @planday_spots = @planday.planday_spots.where("position > 0").order(:position)
+
       respond_to do |format|
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_planday_path(@planday), notice: "we're sorry but something wrong. please contact to administrator." }
         format.json { render json: @planday.errors, status: :unprocessable_entity }
       end
     end
