@@ -2,11 +2,11 @@
   <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
-<div class="row planHeader">
+<div class="row planHeader" >
 
   <!--Title + Tags + Add PLan Button -->
   <div class="span12">
-    <div class="pull-left" id="title">
+    <div class="pull-left">
       <h3><%= link_to @planday.plan.title, @planday.plan %> Day <%= @planday.day %></h3>
     </div>
     <div class="pull-right">
@@ -96,6 +96,66 @@
     </div>
     <div id="map_canvas">
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4 pull-left planSideBar">
+    <section class="mainSection">
+
+      <!-- Main Section Title-->
+      <h4>United Kingdom<span class="city">London</span></h4>
+      <div class="date">28/November/2013</div>
+      <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
+      <div class="budget">15,321<span class="currency">KES</span></div>
+    </section>
+    <div class="accom-options">
+      Accomodiation options
+    </div>
+    <div class="spots">
+      <div class="morning"></div>
+      <section>
+        <div class="number">0</div>
+        <img class="pict">pic</img>
+        <h3>Hotel Circle South, San Diego, CA</h3>
+        <div class="category">Museum</div>
+        <div class="star">★★☆☆☆</div>
+        <div class="tags">#Art, animal, wild life</div>
+        <div class="budget">150<span class="currency">KES</span></div>
+        <div class="time">1<span class="hour">hour</span></div>
+        <details>See datails</details>
+
+      </section>
+      <section>
+        <div class="number">1</div>
+        <img class="pict">pic</img>
+        <h3>Somewhere Else, Castle Street, Cirencester, United Kingdom</h3>
+        <div class="category">Museum</div>
+        <div class="star">★★☆☆☆</div>
+        <div class="tags">#Art, animal, wild life</div>
+        <div class="budget">150<span class="currency">KES</span></div>
+        <div class="time">1<span class="hour">hour</span></div>
+        <details>See datails</details>
+
+      </section>
+      <div class="night"></div>
+
+      <div id="formStuff"><%= render 'form', :action => 'update' %></div>
+      <div>
+        <div class="spots">
+          <%= hidden_field_tag :latitude, '35.712072' %>
+          <%= hidden_field_tag :longitude, '139.79494999999997' %>
+          　　   </div>
+        　</div>
+
+    </div>
+
+  </div>
+
+  <div class="span8 pull-left planSideBar">
+     <h2>Full Details of last clicked spot:</h2>
+    <h4>Spot Reviews</h4>
+    <h4>Spot Photos</h4>
   </div>
 </div>
 
