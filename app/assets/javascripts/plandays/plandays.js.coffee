@@ -135,3 +135,12 @@ $ ->
     name = $(exports.infowindow.content).find("span.name")[0].textContent
     $(insertedItem).find("input")[0].value = name
 
+  $("#planday_spots").sortable
+    axis: "y"
+    handle: ".handle"
+    cursor: "crosshair"
+    items: "li"
+    opacity: 0.4
+    scroll: true
+
+

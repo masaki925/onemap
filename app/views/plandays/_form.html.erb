@@ -12,9 +12,11 @@
   <% end %>
 
   <div id="planday_spots">
-    <div class="links">
-      <%= link_to_add_association 'add planday spot', f, :planday_spots, id: "add_planday_spot", style: "display: none;" %>
-    </div>
+    <ul id="planday_spots" class="connectedSortable">
+      <div class="links">
+        <%= link_to_add_association 'add planday spot', f, :planday_spots, id: "add_planday_spot", style: "display: none;" %>
+      </div>
+    </ul>
   </div>
 
   <hr>
