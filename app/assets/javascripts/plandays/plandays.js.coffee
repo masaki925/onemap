@@ -79,25 +79,21 @@ $ ->
       reference: place.reference
     exports.service.getDetails request, (details, status) ->
       google.maps.event.addListener marker, 'click', ->
+        infoContent =
+          '<div class="infowindow">' +
+          '<span class="gRef" hidden="true">' + place.reference + '</span>' +
+          '<span class="gLat" hidden="true">' + place.geometry.location.lat() + '</span>' +
+          '<span class="gLng" hidden="true">' + place.geometry.location.lng() + '</span>' +
+          '<span class="gName">' + place.name + '</span>' + '<br />'
         if details
-          exports.infowindow.setContent(
-            '<div class="infowindow">' +
-            '<span class="name">' + details.name + '</span>' + '<br />' +
-            '<span class="address">' + details.formatted_address + '</span>' + '<br />' +
-            '<span class="website">' + details.website + '</span>' + '<br />' +
-            '<span class="rating">' + details.rating + '</span>' + '<br />' +
-            '<span class="tel">' + details.formatted_phone_number + '</span>' + '<br />' +
-            '<img src=' + photosURL(photos, details.icon) + '>' + '<br />' +
-            '<button class="addSpot">場所追加</button>' +
-            '</div>'
-          )
-        else
-          exports.infowindow.setContent(
-            '<div class="infowindow">' +
-            '<span class="name">' + place.name + '</span>' + '<br />' +
-            '<button class="addSpot">場所追加</button>' +
-            '</div>'
-          )
+          infoContent +=
+            '<span class="gAddr">' + details.formatted_address + '</span>' + '<br />' +
+            '<span class="gWebsite">' + details.website + '</span>' + '<br />' +
+            '<span class="gRating">' + details.rating + '</span>' + '<br />' +
+            '<span class="gTel">' + details.formatted_phone_number + '</span>' + '<br />' +
+            '<img src=' + photosURL(photos, details.icon) + '>' + '<br />'
+        infoContent += '<button class="addSpot">場所追加</button></div>'
+        exports.infowindow.setContent(infoContent)
         exports.infowindow.open map, this
         $("button.addSpot").on "click", (e) ->
           $("a#add_planday_spot")[0].click()
@@ -147,7 +143,7 @@ $ ->
   setRmSpot()
 
   $("#planday_spots").bind "cocoon:before-insert", (e, insertedItem) ->
-    name = $(exports.infowindow.content).find("span.name")[0].textContent
+    name = $(exports.infowindow.content).find("span.gName")[0].textContent
     $(insertedItem).find("input").filter( ->
       this.id.match(/.*_spot_attributes_name$/)
     )[0].value = name
