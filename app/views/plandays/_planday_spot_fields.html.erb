@@ -1,6 +1,5 @@
 <div class="nested-fields">
   <%= f.fields_for :spot, Spot.new do |spot| %>
-    <%= spot.input :name %>
+    <%= spot.input :name, label: false, input_html: { readonly: "readonly" } %>
   <% end %>
 </div>
-

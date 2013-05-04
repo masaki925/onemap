@@ -81,25 +81,29 @@ $ ->
         if details
           exports.infowindow.setContent(
             '<div class="infowindow">' +
-            '<span>' + details.name + '</span>' + '<br />' +
-            '<span>' + details.formatted_address + '</span>' + '<br />' +
-            '<span>' + details.website + '</span>' + '<br />' +
-            '<span>' + details.rating + '</span>' + '<br />' +
-            '<span>' + details.formatted_phone_number + '</span>' + '<br />' +
+            '<span class="name">' + details.name + '</span>' + '<br />' +
+            '<span class="address">' + details.formatted_address + '</span>' + '<br />' +
+            '<span class="website">' + details.website + '</span>' + '<br />' +
+            '<span class="rating">' + details.rating + '</span>' + '<br />' +
+            '<span class="tel">' + details.formatted_phone_number + '</span>' + '<br />' +
             '<img src=' + photosURL(photos, details.icon) + '>' + '<br />' +
             '<button class="addSpot">場所追加</button>' +
             '</div>'
           )
         else
           exports.infowindow.setContent(
-            place.name + '<button class="addSpot">場所追加</button>'
+            '<div class="infowindow">' +
+            '<span class="name">' + place.name + '</span>' + '<br />' +
+            '<button class="addSpot">場所追加</button>' +
+            '</div>'
           )
         exports.infowindow.open map, this
-        $(".addSpot").on "click", (e) ->
-          li_elem = $("<li><span class='handle'>[drag]</span></li>")
-          li_elem.append( $("<input type='hidden' name='planday_spot[]' value='hoge'>" + e.target.parentNode.childNodes[0].textContent + "</input><span class='rmSpot'> [x]</span>") )
-          $("#new_spots").append( li_elem )
+        $("button.addSpot").on "click", (e) ->
+          $("a#add_planday_spot")[0].click()
 
+          #li_elem = $("<li><span class='handle'>[drag]</span></li>")
+          #li_elem.append( $("<input type='hidden' name='planday_spot[]' value='hoge'>" + e.target.parentNode.childNodes[0].textContent + "</input><span class='rmSpot'> [x]</span>") )
+          #$("#planday_spots").append( li_elem )
 
   photosURL = (photos, details) ->
     if photos
@@ -126,4 +130,8 @@ $ ->
     $item = $src.clone()
     $item.text(place.name)
     $('#spot-list').append($item)
+
+  $("#planday_spots").bind "cocoon:before-insert", (e, insertedItem) ->
+    name = $(exports.infowindow.content).find("span.name")[0].textContent
+    $(insertedItem).find("input")[0].value = name
 
