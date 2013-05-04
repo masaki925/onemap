@@ -36,25 +36,20 @@ $ ->
     request =
       location: exports.destination,
       radius: '500',
-      types: ['restaurant']
-    exports.service.search request, (results, status) ->
-      if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length-1]
-           place = results[i]
-           createMarker(place)
-
+      types: ['meal_delivery', 'meal_takeaway', 'food', 'cafe', 'bar', 'bakery',
+      'restaurant']
+    searchSpots(request)
 
   $('.span3').find('button.sight').click (e) ->
     clearOverlays()
     request =
       location: exports.destination,
       radius: '500',
-      types: ['restaurant']
-    exports.service.search request, (results, status) ->
-      if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length-1]
-           place = results[i]
-           createMarker(place)
+      types: ['amusement_park', 'aquarium', 'art_gallery', 'church', 'casino',
+      'department_store', 'hindu_temple', 'mosque', 'museum', 'night_club',
+      'park', 'place_of_worship', 'shopping_mall', 'spa', 'stadium',
+      'synagogue', 'university', 'zoo']
+    searchSpots(request)
 
   $('.span3').find('button.hotel').click (e) ->
     clearOverlays()
@@ -62,11 +57,7 @@ $ ->
       location: exports.destination,
       radius: '500',
       types: ['lodging']
-    exports.service.search request, (results, status) ->
-      if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length]
-           place = results[i]
-           createMarker(place)
+    searchSpots(request)
 
   directionsService.route request, (results, status) ->
     if status is google.maps.DirectionsStatus.OK
@@ -123,6 +114,12 @@ $ ->
     markersArray.length = 0
     $('#spot-list').empty()
 
+  searchSpots = (request) ->
+    exports.service.search request, (results, status) ->
+      if status is google.maps.places.PlacesServiceStatus.OK
+        for i in [0..results.length - 1]
+           place = results[i]
+           createMarker(place)
 
   $src = $('<li></li><button></button>')
   createSideMenu = (place) ->
