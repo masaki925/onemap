@@ -1,10 +1,13 @@
-<p>都市一覧</p>
-
-<% @cities.each do |city| %>
-  <ul>
-    <li><%= link_to city.name, city %></li>
-  </ul>
-<% end %>
-</table>
-
-<br />
+<div class="row">
+  <div class="span12">
+    <h3 class="tagline">都市一覧</h3>
+    <div class="createNewPlan">
+        <% @cities.each do |city| %>
+          <ul>
+            <li><h4><%= link_to city.name, city %></h4></li>
+          </ul>
+        <% end %>
+        </table>
+    </div>
+  </div>
+</div>
