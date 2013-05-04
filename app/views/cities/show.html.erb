@@ -2,19 +2,15 @@
   <%= javascript_include_tag "cities/cities" %>
 <% end %>
 
-
-<p id="notice"><%= notice %></p>
-
 <div class="row-fluid">
   <div class="span3 createNewPlan">
     <p><%= link_to "create plan", new_plan_path, :class => "btn" %></p>
 
-    <h5 id="city_name"><%= @city.name %>
+    <h5 id="city_name"><%= @city.name %></h5>
     <p>
       <b>Country: </b>
       <%= @city.country_code %>
     </p>
-    </h5>
     <button class="restaurant">restaurant</button>
     <button class="hotel">hotel</button>
     <button class="sight">sight</button>
@@ -22,19 +18,12 @@
     <br>
     <%= link_to 'Edit', edit_city_path(@city), :class => 'btn' %> |
     <%= link_to 'Back', cities_path, :class => 'btn' %>
-
-    <div class="spots">
-      <%= hidden_field_tag :latitude, '35.712072' %>
-      <%= hidden_field_tag :longitude, '139.79494999999997' %>
-    </div>
   </div>
+
   <div class="span9">
     <div id="map_canvas"></div>
   </div>
 </div>
 
 <div id="spot-list"></div>
-
-
-
 

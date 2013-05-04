@@ -3,17 +3,16 @@
 <% end %>
 
 <h1>New day plan for <%= link_to @plan.title, plan_path(@plan) %></h1>
+<h5 id="city_name"><%= @city ? @city.name : "New York" %></h5>
+
 <div class="row-fluid">
   <div class="span3">
     <button class="restaurant">restaurant</button>
     <button class="hotel">hotel</button>
     <button class="sight">sight</button>
-    <div class="spots">
-      <%= hidden_field_tag :latitude, '35.712072' %>
-      <%= hidden_field_tag :longitude, '139.79494999999997' %>
-    </div>
     <%= render 'form', :action => 'create' %>
   </div>
+
   <div class="span9">
     <div id="map_canvas"></div>
   </div>

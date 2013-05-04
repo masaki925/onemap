@@ -6,17 +6,15 @@
     <div class="createNewPlan">
       <!--create plan button-->
       <ul class="newPlanInput">
+        <li><label><span>From: </span></label><input type="date" class="newPlanInput"></li>
+        <li><label><span>To: </span></label><input type="date" class="newPlanInput"></li>
         <li>
         <%= form_tag cities_area_path, :method => 'get', :id => "areas_search" do %>
             <%= hidden_field_tag :sort, params[:sort]%>
             <%= select_tag "country", grouped_options_for_select( {'North America' => [['United States','US'], 'Canada'], 'Europe' => [] }) %>
-            <%= submit_tag "go", :first_name => nil %>
+            <%= submit_tag "旅行プランを作成！", :first_name => nil, class: "btn btn-primary btn-large" %>
         <% end %>
         </li>
-        <li><label><span>From: </span></label><input type="date" class="newPlanInput"></li>
-        <li><label><span>To: </span></label><input type="date" class="newPlanInput"></li>
-        <!--Start New Plan-->
-        <li><a class="btn btn-primary btn-large">旅行プランを作成！</a></li>
       </ul>
     </div>
   </div>

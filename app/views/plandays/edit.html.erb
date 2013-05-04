@@ -72,17 +72,10 @@
         </div>
 
       <div>
-        <div class="spots">
-          <%= hidden_field_tag :latitude, '35.712072' %>
-          <%= hidden_field_tag :longitude, '139.79494999999997' %>
-        </div>
         <%= render 'form', :action => 'update' %>
       </div>
 
       <%= link_to 'Show', @planday %>
-
-      <a href="/plan_days/edit/7">Edit</a> |
-      <a href="/plans/2">Back</a>
 
     </div>
 

@@ -25,15 +25,28 @@ $ ->
     this.id == "longitude" or this.id.match(/.*_spot_attributes_lng$/)
   )
   waypoints = []
-  spots.each (index) ->
-    switch index
-      when 0, spots.length - 1
+  unless spots.empty?
+    spots.each (index) ->
+      switch index
+        when 0, spots.length - 1
+        else
+          waypoints.push location:new google.maps.LatLng(lat_inputs[index].value, lng_inputs[index].value)
+    exports.startpoint = new google.maps.LatLng(lat_inputs[0].value, lng_inputs[0].value)
+    exports.destination = new google.maps.LatLng(lat_inputs[spots.length - 1].value, lng_inputs[spots.length - 1].value)
+  else
+    city_name = $("#city_name").text()
+    geocoder = new google.maps.Geocoder()
+    geocoder.geocode {'address': city_name}, (results, status) ->
+      unless status == google.maps.GeocoderStatus.OK
+        alert 'sorry, something wrong'
       else
-        waypoints.push location:new google.maps.LatLng(lat_inputs[index].value, lng_inputs[index].value)
-  exports.destination = new google.maps.LatLng(lat_inputs[spots.length - 1].value, lng_inputs[spots.length - 1].value)
+        destination = results[0].geometry.location
+        map.setCenter destination
+        exports.destination = destination
+
 
   request =
-    origin: new google.maps.LatLng(lat_inputs[0].value, lng_inputs[0].value),
+    origin: exports.startpoint,
     waypoints: waypoints,
     destination: exports.destination
     travelMode: google.maps.TravelMode.WALKING
