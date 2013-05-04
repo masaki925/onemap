@@ -71,16 +71,19 @@ $ ->
       directionsDisplay.setDirections(results)
       directionsDisplay.setMap(map)
 
-  createMarker = (place) ->
+  createMarker = (place, i) ->
     placeLoc = place.geometry.location
     bounds.extend(placeLoc)
     map.fitBounds(bounds)
     photos = place.photos
+    iconNumber = i + 1
+    iconURL = iconURL = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + iconNumber + '|7FFF00|000000'
     marker = new google.maps.Marker
       map: map,
       position: placeLoc
+      icon: iconURL
     markersArray.push(marker)
-    createSideMenu(place)
+    createSideMenu(place, iconURL, iconNumber)
     request =
       reference: place.reference
     exports.service.getDetails request, (details, status) ->
@@ -124,13 +127,15 @@ $ ->
       if status is google.maps.places.PlacesServiceStatus.OK
         for i in [0..results.length - 1]
            place = results[i]
-           createMarker(place)
-
-  $src = $('<li></li><button></button>')
-  createSideMenu = (place) ->
+           createMarker(place, i)
+  $src = $('<li><img><p></p></img></li><button>場所追加</button>')
+  createSideMenu = (place, iconURL, iconNumber) ->
     $item = $src.clone()
-    $item.text(place.name)
+    $item.find('img').attr({'src':iconURL, 'alt':String(iconNumber)})
+    $item.find('p').text(place.name)
     $('#spot-list').append($item)
+    $item.find('img').on "click", (e) ->
+      google.maps.event.trigger markersArray[this.alt - 1], 'click'
 
   # map funcs end   -----------------------------------
 
