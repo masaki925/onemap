@@ -136,7 +136,9 @@ $ ->
 
   calcSpotPosition = ->
     $("#planday_spots li").each ->
-      $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
+      $(this).find("input.hidden").filter( ->
+        this.id.match(/.*_position$/)
+      )[0].value = ($("#planday_spots li").index this) + 1
 
   # planday func end   --------------------------------
 
