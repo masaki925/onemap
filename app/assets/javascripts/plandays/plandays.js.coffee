@@ -25,7 +25,7 @@ $ ->
     this.id == "longitude" or this.id.match(/.*_spot_attributes_lng$/)
   )
   waypoints = []
-  unless spots.empty?
+  if spots.length > 0
     spots.each (index) ->
       switch index
         when 0, spots.length - 1
