@@ -2,28 +2,94 @@
   <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
-<h1>Editing day plan for <%= link_to @plan.title, plan_path(@plan) %></h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
 
-<p>
-  <b>Plan:</b>
-  <%= link_to @planday.plan.title, @planday.plan %>
-</p>
-
-<p>
-  <b>Day:</b>
-  <%= @planday.day %>
-</p>
-
-<div class="row-fluid">
-  <div class="span3">
-    <button class="restaurant">restaurant</button>
-    <button class="hotel">hotel</button>
-    <button class="sight">sight</button>
-    <%= render 'form', :action => 'update' %>
+      <header id="title">
+      <h3>Title</h3>
+      <ul class="nav nav-pills">
+        <li>
+          <div class="country">
+              United Kingdom
+          <span class="city">
+          London
+          </span>
+          </div>
+        </li>
+       </ul>
+       </h3>
+       </header>
+    </div>
   </div>
-  <div class="span9">
-    <div id="map_canvas"></div>
-  </div>
-</div>
 
-<%= link_to 'Show', @planday %>
+  <div class="row-fluid">
+    <div class="span3" id="mapButtonDiv">
+
+      <button class="plans btn mapButton">Nearby Plans</button>
+      <button class="restaurant btn mapButton">Restaurants</button>
+      <button class="hotel btn mapButton active">Hotels</button>
+      <button class="sight btn mapButton">Sights</button>
+
+      <section>
+        <h2>United Kingdom<span class="city">London</span></h2>
+        <div class="left-arrow"><</div>
+        <div class="date">28/November/2013</div>
+        <div class="right-arrow">></div>
+        <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
+        <div class="budget">15,321<span class="currency">KES</span></div>
+      </section>
+      <div class="accom-options">
+        Accomodiation options
+      </div>
+      <div class="spots">
+        <div class="morning"></div>
+        <section>
+          <div class="number">0</div>
+          <img class="pict">pic</img>
+          <h3>Hotel Circle South, San Diego, CA</h3>
+          <div class="category">Museum</div>
+          <div class="star">★★☆☆☆</div>
+          <div class="tags">#Art, animal, wild life</div>
+          <div class="budget">150<span class="currency">KES</span></div>
+          <div class="time">1<span class="hour">hour</span></div>
+          <details>See datails</details>
+
+        </section>
+        <section>
+          <div class="number">1</div>
+          <img class="pict">pic</img>
+          <h3>Somewhere Else, Castle Street, Cirencester, United Kingdom</h3>
+          <div class="category">Museum</div>
+          <div class="star">★★☆☆☆</div>
+          <div class="tags">#Art, animal, wild life</div>
+          <div class="budget">150<span class="currency">KES</span></div>
+          <div class="time">1<span class="hour">hour</span></div>
+          <details>See datails</details>
+
+        </section>
+        <div class="night"></div>
+        </div>
+
+      <div>
+        <div class="spots">
+          <%= hidden_field_tag :latitude, '35.712072' %>
+          <%= hidden_field_tag :longitude, '139.79494999999997' %>
+        </div>
+        <%= render 'form', :action => 'update' %>
+      </div>
+
+      <%= link_to 'Show', @planday %>
+
+      <a href="/plan_days/edit/7">Edit</a> |
+      <a href="/plans/2">Back</a>
+
+    </div>
+
+      <div class="span9">
+        <div id="map_canvas"></div>
+      </div>
+  </div>
+
+</div> <!-- /container -->
+

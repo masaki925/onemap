@@ -1,11 +1,85 @@
-<h2>Welcome to OneMap!</h2>
-<h3>create your plan</h3>
+<div class="row">
+  <div class="span12">
 
-<%= form_tag cities_area_path, :method => 'get', :id => "areas_search" do %>
-  <%= hidden_field_tag :sort, params[:sort]%>
-  <%= select_tag "country", grouped_options_for_select( {'North America' => [['United States','US'], 'Canada'], 'Europe' => [] }) %>
-  <%= submit_tag "select city", :first_name => nil %>
-<% end %>
+    <!--Plan sights, hotels, and travel connections on one map!-->
+    <h3 class="tagline">友達と地図を共有しながら観光、宿泊の旅行プランを立てよう</h3>
+    <div class="createNewPlan">
+      <!--create plan button-->
+      <ul class="newPlanInput">
+        <li>
+        <%= form_tag cities_area_path, :method => 'get', :id => "areas_search" do %>
+            <%= hidden_field_tag :sort, params[:sort]%>
+            <%= select_tag "country", grouped_options_for_select( {'North America' => [['United States','US'], 'Canada'], 'Europe' => [] }) %>
+            <%= submit_tag "go", :first_name => nil %>
+        <% end %>
+        </li>
+        <li><label><span>From: </span></label><input type="date" class="newPlanInput"></li>
+        <li><label><span>To: </span></label><input type="date" class="newPlanInput"></li>
+        <!--Start New Plan-->
+        <li><a class="btn btn-primary btn-large">旅行プランを作成！</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <!--Browse travel plans made with one map -->
+    <h3 class="tagline">他のユーザーの旅行プラン</h3>
+    <!--create plan button-->
+    <div id="browsePlans">
+      <form>
+        <label><span></span></label><input type="text" class="browseInput country" placeholder="國">
+        <a class="btn" id="countryBrowse">サーチ</a>
+        <label><span></span></label><input type="text" class="browseInput" placeholder="人気の都市">
+        <option value="New York"></option>
+        <option value="New York"></option>
+        <option value="New York"></option>
+        <option value="New York"></option>
+        <label><span></span></label><input type="text" class="browseInput" placeholder="旅行のテーマ">
+        <option value="Romantic"></option>
+        <option value="Family"></option>
+        <option value="Adventure"></option>
+        <option value="Cultural"></option>
+
+      </form>
+      <!--Start New Plan-->
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4 examplePlan">
+
+  </div>
+  <div class="span4 examplePlan">
+
+  </div>
+  <div class="span4 examplePlan">
+
+  </div>
+  <div class="span4 examplePlan">
+
+  </div>
+  <div class="span4 examplePlan">
+
+  </div>
+  <div class="span4 examplePlan">
+
+  </div>
+</div>
+
+<div class="row">
+  <br>
+  <br>
+
+  <a href="#">a link</a>
+  <p>An example paragraph</p>
+  <h1>h1</h1>
+  <h2>h2</h2>
+  <h3>h3</h3>
+  <h4>h4</h4>
+  <h5>h5</h5>
+  <h6>h6</h6>
+</div>
 
 <hr>
 <h3>view plans</h3>
