@@ -1,12 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
-calcSpotPosition = ->
-  $("#planday_spots li").each ->
-    $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
-
 $ ->
+  # map funcs start -----------------------------------
   exports = this
   mapOptions =
     center: new google.maps.LatLng(-34.397, 150.644),
@@ -106,6 +102,7 @@ $ ->
         $("button.addSpot").on "click", (e) ->
           $("a#add_planday_spot")[0].click()
           calcSpotPosition()
+          setRmSpot()
 
   photosURL = (photos, details) ->
     if photos
@@ -132,6 +129,22 @@ $ ->
     $item = $src.clone()
     $item.text(place.name)
     $('#spot-list').append($item)
+
+  # map funcs end   -----------------------------------
+
+  # planday func start --------------------------------
+  setRmSpot = ->
+    $("span.rmSpot").on 'click', (e) ->
+      e.target.parentNode.parentNode.remove()
+      calcSpotPosition()
+
+  calcSpotPosition = ->
+    $("#planday_spots li").each ->
+      $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
+
+  # planday func end   --------------------------------
+
+  setRmSpot()
 
   $("#planday_spots").bind "cocoon:before-insert", (e, insertedItem) ->
     name = $(exports.infowindow.content).find("span.name")[0].textContent

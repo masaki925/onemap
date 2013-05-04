@@ -3,7 +3,7 @@ class PlandaysController < ApplicationController
   # GET /plandays/1.json
   def show
     @planday = Planday.find(params[:id])
-    @spots   = @planday.spots.order('planday_spots.position ASC')
+    @spots   = @planday.spots.where("planday_spots.position > 0").order('planday_spots.position ASC')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class PlandaysController < ApplicationController
   def edit
     @planday = Planday.find(params[:id])
     @plan    = @planday.plan
-    @planday_spots = @planday.planday_spots.order(:position)
+    @planday_spots = @planday.planday_spots.where("position > 0").order(:position)
   end
 
   # POST /plandays
@@ -54,11 +54,23 @@ class PlandaysController < ApplicationController
   def update
     @planday = Planday.find(params[:id])
 
-    respond_to do |format|
-      if @planday.update_attributes(params[:planday])
-        format.html { redirect_to @planday, notice: 'Planday was successfully updated.' }
-        format.json { head :no_content }
-      else
+    begin
+      ActiveRecord::Base.transaction do
+        # TODO: avoid treat about complex add, sort, remove spot list for now.
+        @planday.planday_spots.map do |ps|
+          ps.position = -1
+          ps.save
+        end
+
+        if @planday.update_attributes(params[:planday])
+          respond_to do |format|
+            format.html { redirect_to @planday, notice: 'Planday was successfully updated.' }
+            format.json { head :no_content }
+          end
+        end
+      end
+    rescue => ex
+      respond_to do |format|
         format.html { render action: "edit" }
         format.json { render json: @planday.errors, status: :unprocessable_entity }
       end
