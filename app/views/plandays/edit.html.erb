@@ -2,40 +2,47 @@
   <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
-<div class="container-fluid">
-  <div class="row-fluid">
+<div class="container" >
+  <div class="row" id="title">
     <div class="span12">
+      <div class="span6 pull-right">
 
-      <header id="title">
-      <h3>Title</h3>
-      <ul class="nav nav-pills">
-        <li>
-          <div class="country">
-              United Kingdom
-          <span class="city">
-          London
-          </span>
-          </div>
-        </li>
-       </ul>
-       </h3>
-       </header>
+        <ul  class="themeTags">
+          <a href="#">Tags</a>
+          <li>Culture [x]</li>
+          <li>Photography [x]</li>
+          <li>Romantic [x]</li>
+          <li class="tagInput"><%= text_field 'Theme_or_keyword', 'Theme_or_keyword' %>
+          <b><%= link_to " [+] Add Tag", "#" %></b></li>
+        </ul>
+      </div>
+      <div class="pull-left span6">
+
+        <h3><%= link_to "Plan_Title", "#" %> Day 2</h3>
+      </div>
+      <!-- Duration and Currency + Budget   -->
+      <div class="pull-left lengthBudget span6">
+        <label>Budget: </label><%= text_field 'Budget', 'Budget' %>
+        <button class="currency">Currency</button>
+
+        <div class="pull-left addButton">
+          <%= link_to 'Back', plan_path(@planday.plan), :class => 'btn' %>
+          <%= link_to 'Done Editing', @planday, :class => 'btn' %>
+        </div>
+      </div>
+
+      <!--Back and Edit Buttons-->
+
     </div>
   </div>
 
-  <div class="row-fluid">
-    <div class="span3" id="mapButtonDiv">
+  <div class="row">
+    <div class="span4 pull-left planSideBar">
+      <section class="mainSection">
 
-      <button class="plans btn mapButton">Nearby Plans</button>
-      <button class="restaurant btn mapButton">Restaurants</button>
-      <button class="hotel btn mapButton active">Hotels</button>
-      <button class="sight btn mapButton">Sights</button>
-
-      <section>
-        <h2>United Kingdom<span class="city">London</span></h2>
-        <div class="left-arrow"><</div>
+        <!-- Main Section Title-->
+        <h4>United Kingdom<span class="city">London</span></h4>
         <div class="date">28/November/2013</div>
-        <div class="right-arrow">></div>
         <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
         <div class="budget">15,321<span class="currency">KES</span></div>
       </section>
@@ -45,7 +52,7 @@
       <div class="spots">
         <div class="morning"></div>
         <section>
-          <div class="number">0</div>
+          <div class="number">1</div>
           <img class="pict">pic</img>
           <h3>Hotel Circle South, San Diego, CA</h3>
           <div class="category">Museum</div>
@@ -57,7 +64,7 @@
 
         </section>
         <section>
-          <div class="number">1</div>
+          <div class="number">2</div>
           <img class="pict">pic</img>
           <h3>Somewhere Else, Castle Street, Cirencester, United Kingdom</h3>
           <div class="category">Museum</div>
@@ -69,20 +76,39 @@
 
         </section>
         <div class="night"></div>
-        </div>
 
-      <div>
-        <%= render 'form', :action => 'update' %>
+        <div id="formStuff"><%= render 'form', :action => 'update' %></div>
+        <div>
+          <div class="spots">
+            <%= hidden_field_tag :latitude, '35.712072' %>
+            <%= hidden_field_tag :longitude, '139.79494999999997' %>
+    　　   </div>
+      　</div>
       </div>
-
-      <%= link_to 'Show', @planday %>
 
     </div>
+    <div class="span8 pull-right mapDiv">
+      <div class="span3 pull-left" id="mapButtonDiv">
+        <button class="plans btn mapButton">Nearby Plans</button>
+        <button class="restaurant btn mapButton">Restaurants</button>
+        <button class="hotel btn mapButton active">Hotels</button>
+        <button class="sight btn mapButton">Sights</button>
+        <div class="mapSearch">
+          <%= link_to 'Search', '#', :class => 'btn mapSearch' %>
+          <%= text_field 'Theme_or_keyword', 'Theme_or_keyword' %>
 
-      <div class="span9">
-        <div id="map_canvas"></div>
+        </div>
       </div>
+
+      <div id="map_canvas"></div>
+      </div>
+      <div>
+        <h2>Full Details of last clicked spot:</h2>
+        <h4>Spot Reviews</h4>
+        <h4>Spot Photos</h4>
+      </div>
+
+
+    </div>
   </div>
-
 </div> <!-- /container -->
-
