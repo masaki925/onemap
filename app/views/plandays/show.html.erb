@@ -11,22 +11,21 @@
   <b>Day:</b>
   <%= @planday.day %>
 </p>
-
-<p>
-  <b>Spots:</b>
-  <% @spots.each do |spot| %>
-    <li><%= spot.name %></li>
-  <% end %>
-</p>
+<hr>
 
 <div class="row-fluid">
   <div class="span3">
     <button class="restaurant">restaurant</button>
     <button class="hotel">hotel</button>
     <button class="sight">sight</button>
-    <div class="spots">
-      <%= hidden_field_tag :latitude, '35.712072' %>
-      <%= hidden_field_tag :longitude, '139.79494999999997' %>
+    <div class="planday_spots">
+      <% @spots.each do |spot| %>
+        <li>
+          <%= spot.name %>
+          <%= hidden_field_tag :latitude, spot.lat %>
+          <%= hidden_field_tag :longitude, spot.lng %>
+        </li>
+      <% end %>
     </div>
   </div>
   <div class="span9">

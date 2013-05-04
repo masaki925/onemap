@@ -17,17 +17,23 @@ $ ->
   directionsService = new google.maps.DirectionsService()
   bounds = new google.maps.LatLngBounds()
 
-  spots = $('.spots')
+  spots = $('.planday_spots li')
+  lat_inputs = spots.find("input").filter( ->
+    this.id == "latitude" or this.id.match(/.*_spot_attributes_lat$/)
+  )
+  lng_inputs = spots.find("input").filter( ->
+    this.id == "longitude" or this.id.match(/.*_spot_attributes_lng$/)
+  )
   waypoints = []
   spots.each (index) ->
     switch index
       when 0, spots.length - 1
       else
-        waypoints.push location:new google.maps.LatLng(spots.find("input#latitude")[index].value, spots.find("input#longitude")[index].value)
-  exports.destination = new google.maps.LatLng(spots.find('input#latitude')[spots.length - 1].value, spots.find('input#longitude')[spots.length - 1].value)
+        waypoints.push location:new google.maps.LatLng(lat_inputs[index].value, lng_inputs[index].value)
+  exports.destination = new google.maps.LatLng(lat_inputs[spots.length - 1].value, lng_inputs[spots.length - 1].value)
 
   request =
-    origin: new google.maps.LatLng(spots.find('input#latitude')[0].value, spots.find('input#longitude')[0].value),
+    origin: new google.maps.LatLng(lat_inputs[0].value, lng_inputs[0].value),
     waypoints: waypoints,
     destination: exports.destination
     travelMode: google.maps.TravelMode.WALKING
@@ -145,10 +151,22 @@ $ ->
   setRmSpot()
 
   $("#planday_spots").bind "cocoon:before-insert", (e, insertedItem) ->
-    name = $(exports.infowindow.content).find("span.gName")[0].textContent
+    gName = $(exports.infowindow.content).find("span.gName")[0].textContent
+    gRef  = $(exports.infowindow.content).find("span.gRef")[0].textContent
+    gLat  = $(exports.infowindow.content).find("span.gLat")[0].textContent
+    gLng  = $(exports.infowindow.content).find("span.gLng")[0].textContent
     $(insertedItem).find("input").filter( ->
       this.id.match(/.*_spot_attributes_name$/)
-    )[0].value = name
+    )[0].value = gName
+    $(insertedItem).find("input").filter( ->
+      this.id.match(/.*_spot_attributes_google_reference$/)
+    )[0].value = gRef
+    $(insertedItem).find("input").filter( ->
+      this.id.match(/.*_spot_attributes_lat$/)
+    )[0].value = gLat
+    $(insertedItem).find("input").filter( ->
+      this.id.match(/.*_spot_attributes_lng$/)
+    )[0].value = gLng
 
   $("#planday_spots").sortable
     axis: "y"

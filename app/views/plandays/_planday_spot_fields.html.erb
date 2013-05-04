@@ -4,6 +4,9 @@
   <div class="nested-fields">
     <%= f.fields_for :spot, spot_obj do |spot| %>
       <%= spot.input :name, label: false, input_html: { readonly: "readonly" } %>
+      <%= spot.input :google_reference, label: false, as: :hidden %>
+      <%= spot.input :lat, label: false, as: :hidden %>
+      <%= spot.input :lng, label: false, as: :hidden %>
     <% end %>
     <%= f.input :position, as: :hidden %>
     <span class='rmSpot'> [x]</span>

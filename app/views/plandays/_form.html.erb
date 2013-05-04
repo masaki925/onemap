@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div id="planday_spots">
+  <div id="planday_spots" class="planday_spots">
     <ul id="planday_spots" class="connectedSortable">
       <% @planday_spots.each do |pd_spot| %>
         <%= f.simple_fields_for :planday_spots, pd_spot do |pd_spot_form| %>
