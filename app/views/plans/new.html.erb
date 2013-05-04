@@ -1,5 +1,12 @@
-<h1>New plan</h1>
+<h3 class="tagline">Create a New Plan</h3>
 
-<%= render 'form' %>
+<div class="createNewPlan">
+  <!--create plan button-->
+  <ul class="newPlanInput">
+    <li><%= render 'form' %>
+    <!--Start New Plan-->
+    <li><a class="btn btn-primary btn-large">旅行プランを作成！</a></li>
+  </ul>
+</div>
 
-<%= link_to 'Back', plans_path %>
+<%= link_to 'Back', plans_path, :class => 'btn'  %>

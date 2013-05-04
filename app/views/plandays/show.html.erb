@@ -2,22 +2,89 @@
   <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
-<p>
-  <b>Plan:</b>
-  <%= link_to @planday.plan.title, @planday.plan %>
-</p>
+<div class="row planHeader">
 
-<p>
-  <b>Day:</b>
-  <%= @planday.day %>
-</p>
-<hr>
+  <!--Title + Tags + Add PLan Button -->
+  <div class="span12">
+    <div class="pull-left" id="title">
+      <h3><%= link_to @planday.plan.title, @planday.plan %> Day <%= @planday.day %></h3>
+    </div>
+    <div class="pull-right">
+      <ul  class="themeTags">
+        <a href="#">Tags</a>
+        <li>Culture</li>
+        <li>Photography</li>
+        <li>Romantic</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="row-fluid">
-  <div class="span3">
-    <button class="restaurant">restaurant</button>
-    <button class="hotel">hotel</button>
-    <button class="sight">sight</button>
+  <div class="span12">
+
+    <!-- Creator Image + Creator Name -->
+    <div class="pull-right createdBy">
+      <img id="userProfile" src="/assets/profilePic.jpg">
+      <div class="profileInfo">
+        <a href="#"><h5>Created by Justin</h5></a>
+        <a href="#">31416 points</a><br>
+        <a href="#">MASTER level</a>
+      </div>
+    </div>
+
+    <!-- Duration (hours) + Rating + Reviews + Currency + Budget   -->
+    <div class="pull-left lengthBudget">
+      <h5>3.1 ★★★☆☆ <a href="#">(See Reviews)</a></h5>
+      <h5>$200</h5>
+      <h5><button class="currency">Currency</button></h5><br>
+
+    </div>
+    <div class="pull-left addButton">
+      <a class="btn">Add to my Plan</a>
+
+      <%= link_to 'Back', plan_path(@planday.plan), :class => 'btn' %>
+      <%= link_to 'Edit', edit_planday_path(@planday), :class => 'btn' %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <!--Photo viewer -->
+  <div class="span6 photoviewer">
+    <div id="photoNav">
+      <ul>
+        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
+        <li class="photoNav middle"><img src="/assets/italyThumb.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
+      </ul>
+    </div>
+    <div id="photoContainer">
+      <!--The page Container is a ul list of photos-->
+      <ul>
+        <li><img src="/assets/italyTower.JPG"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+      </ul>
+    </div>
+    <!-- arrows must have a higher z-index-->
+    <div class="arrow left"><img src="/assets/arrow_left.png"></div>
+    <div class="arrow right"><img src="/assets/arrow_right.png"></div>
+  </div>
+
+  <!-- Map -->
+  <div class="span6 mapDiv">
+    <div class="span3" id="mapButtonDiv">
+      <button class="plans btn mapButton">Nearby Plans</button>
+      <button class="restaurant btn mapButton">Restaurants</button>
+      <button class="hotel btn mapButton active">Hotels</button>
+      <button class="sight btn mapButton">Sights</button>
+    </div>
+
     <div class="planday_spots">
       <% @spots.each do |spot| %>
         <li>
@@ -27,11 +94,10 @@
         </li>
       <% end %>
     </div>
-  </div>
-  <div class="span9">
-    <div id="map_canvas"></div>
+    <div id="map_canvas">
+    </div>
   </div>
 </div>
 
-<%= link_to 'Edit', edit_planday_path(@planday) %> |
-<%= link_to 'Back', plan_path(@planday.plan) %>
+<%= link_to 'Back', plan_path(@planday.plan), :class => 'btn' %>
+<%= link_to 'Edit', edit_planday_path(@planday), :class => 'btn' %>
