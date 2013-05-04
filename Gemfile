@@ -35,13 +35,13 @@ group :assets do
 
   gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails', :git => 'git://github.com/anjlab/bootstrap-rails.git'
   gem 'compass-rails'
-  gem 'jquery-ui-rails'
   gem 'jquery-rails'
   gem 'sassy-buttons'
 
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'jquery-ui-rails'
 gem 'sorcery'
 
 gem 'simple_form'
