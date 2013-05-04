@@ -2,17 +2,30 @@
   <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
-<h1>Editing planday</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Editing day plan for <%= link_to @plan.title, plan_path(@plan) %></h1>
+
+<p>
+  <b>Plan:</b>
+  <%= link_to @planday.plan.title, @planday.plan %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%= @planday.day %>
+</p>
 
 <div class="row-fluid">
   <div class="span3">
     <button class="restaurant">restaurant</button>
     <button class="hotel">hotel</button>
+    <button class="sight">sight</button>
     <div class="spots">
       <%= hidden_field_tag :latitude, '35.712072' %>
       <%= hidden_field_tag :longitude, '139.79494999999997' %>
     </div>
-    <%= render 'form' %>
+    <%= render 'form', :action => 'update' %>
   </div>
   <div class="span9">
     <div id="map_canvas"></div>

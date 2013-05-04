@@ -12,7 +12,7 @@
       <%= hidden_field_tag :latitude, '35.712072' %>
       <%= hidden_field_tag :longitude, '139.79494999999997' %>
     </div>
-    <%= render 'form' %>
+    <%= render 'form', :action => 'create' %>
   </div>
   <div class="span9">
     <div id="map_canvas"></div>

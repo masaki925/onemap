@@ -1,4 +1,4 @@
-<%= simple_form_for([@plan, @planday]) do |f| %>
+<%= simple_form_for [@plan, @planday], url: { action: action }  do |f| %>
   <% if @planday.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planday.errors.count, "error") %> prohibited this planday from being saved:</h2>
@@ -13,6 +13,12 @@
 
   <div id="planday_spots">
     <ul id="planday_spots" class="connectedSortable">
+      <% @planday_spots.each do |pd_spot| %>
+        <%= f.simple_fields_for :planday_spots, pd_spot do |pd_spot_form| %>
+          <%= render 'planday_spot_fields', :f => pd_spot_form, :spot => pd_spot.spot %>
+        <% end %>
+      <% end %>
+
       <div class="links">
         <%= link_to_add_association 'add planday spot', f, :planday_spots, id: "add_planday_spot", style: "display: none;" %>
       </div>

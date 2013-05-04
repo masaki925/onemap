@@ -3,6 +3,7 @@ class PlandaysController < ApplicationController
   # GET /plandays/1.json
   def show
     @planday = Planday.find(params[:id])
+    @spots   = @planday.spots.order('planday_spots.position ASC')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,8 @@ class PlandaysController < ApplicationController
   # GET /plandays/1/edit
   def edit
     @planday = Planday.find(params[:id])
+    @plan    = @planday.plan
+    @planday_spots = @planday.planday_spots.order(:position)
   end
 
   # POST /plandays

@@ -1,6 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+calcSpotPosition = ->
+  $("#planday_spots li").each ->
+    $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
+
 $ ->
   exports = this
   mapOptions =
@@ -100,10 +105,7 @@ $ ->
         exports.infowindow.open map, this
         $("button.addSpot").on "click", (e) ->
           $("a#add_planday_spot")[0].click()
-
-          #li_elem = $("<li><span class='handle'>[drag]</span></li>")
-          #li_elem.append( $("<input type='hidden' name='planday_spot[]' value='hoge'>" + e.target.parentNode.childNodes[0].textContent + "</input><span class='rmSpot'> [x]</span>") )
-          #$("#planday_spots").append( li_elem )
+          calcSpotPosition()
 
   photosURL = (photos, details) ->
     if photos
@@ -143,6 +145,5 @@ $ ->
     opacity: 0.4
     scroll: true
     update: ->
-      $("#planday_spots li").each ->
-        $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
+      calcSpotPosition()
 

@@ -1,7 +1,8 @@
+<% defined?(spot).nil? ? (spot_obj = Spot.new) : (spot_obj = spot) %>
 <li>
   <span class="handle">[drag]</span>
   <div class="nested-fields">
-    <%= f.fields_for :spot, Spot.new do |spot| %>
+    <%= f.fields_for :spot, spot_obj do |spot| %>
       <%= spot.input :name, label: false, input_html: { readonly: "readonly" } %>
     <% end %>
     <%= f.input :position, as: :hidden %>
