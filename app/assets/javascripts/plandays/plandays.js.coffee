@@ -142,5 +142,7 @@ $ ->
     items: "li"
     opacity: 0.4
     scroll: true
-
+    update: ->
+      $("#planday_spots li").each ->
+        $(this).find("input.hidden")[0].value = ($("#planday_spots li").index this) + 1
 

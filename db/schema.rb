@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130503080859) do
   create_table "planday_spots", :force => true do |t|
     t.integer  "planday_id", :null => false
     t.integer  "spot_id",    :null => false
+    t.integer  "position",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -3,6 +3,7 @@ class CreatePlandaySpots < ActiveRecord::Migration
     create_table :planday_spots do |t|
       t.references :planday, null:false
       t.references :spot, null:false
+      t.integer :position, null:false
 
       t.timestamps
     end

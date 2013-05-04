@@ -4,5 +4,6 @@
     <%= f.fields_for :spot, Spot.new do |spot| %>
       <%= spot.input :name, label: false, input_html: { readonly: "readonly" } %>
     <% end %>
+    <%= f.input :position, as: :hidden %>
   </div>
 </li>
