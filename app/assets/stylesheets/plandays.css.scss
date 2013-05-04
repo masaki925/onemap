@@ -1,8 +1,317 @@
 // Place all the styles related to the Plandays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div#map_canvas {
-  margin: 0 !important;
-  height: 650px;
-  width: 704px
+
+
+#title{
+  margin-top: 15px;
+  color: #3e5e5c;
+  background-color: #fee9a6;
+  padding: 1px 10px 1px 10px;
+
+  background-image: linear-gradient(to bottom, #fff7ee, #feeeb4);
+  background-repeat: repeat-x;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+  border-radius: 15px 15px 0 0;
+
+  -webkit-box-shadow: 1px 1px 3px 0px #9a9a9a;
+  -moz-box-shadow: 1px 1px 3px 0px #9A9A9A;
+  box-shadow: 1px 1px 5px 1px #9A9A9A;
+}
+
+#title h1{
+  margin: 3px 0 10px 0;
+}
+
+ul.nav.nav-pills{
+  margin: 0 0 3px 0;
+}
+
+.row-fluid div.span3{
+  width: 280px;
+}
+
+.span3{
+  background-color: rgba(169, 189, 182, 0.25);
+  -webkit-box-shadow: 1px 0px 6px 0px #9a9a9a;
+  -moz-box-shadow: 1px 0px 6px 0px #9A9A9A;
+  box-shadow: 1px 0px 6px 0px #9A9A9A;
+}
+
+.span3 h2{
+  color: #3E5E5C;
+  background-color: #fee9a6;
+  padding: 1px 10px 1px 10px;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.city{
+  margin: 0 30px 0 15px;
+  font-weight: lighter;
+}
+
+
+.span3 section{
+  height: 135px;
+  background-color: #fee9a6;
+  -webkit-box-shadow: 0px 2px 3px 0px #9a9a9a;
+  -moz-box-shadow: 0px 2px 3px 0px #9A9A9A;
+  box-shadow: 0px 2px 3px 0px #9A9A9A;
+
+  border-radius: 15px;
+}
+
+div.spots section, .accom-options{
+  background-color: white;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+  border: 1px solid #bebebe;
+}
+.accom-options{
+  border: 1px solid #848484;
+}
+
+
+.left-arrow, .date, .right-arrow, .time, .budget{
+  background-color: white;
+  margin: 15px 15px 10px 15px;
+  padding: 0px 5px 0px 5px;
+  float: left;
+  text-align: center;
+}
+.time, .budget{
+  margin: 15px 15px -10px 15px;
+}
+
+div.date{
+  width: 124px;
+  margin: 10px 15px 5px 15px;
+  padding: 5px 15px 5px 15px;
+}
+.time, .budget{
+  width: 80px;
+  padding: 0px 15px 0px 15px;
+}
+span.hour{
+  margin-right: 10px
+}
+span.currency{
+  margin-left: 10px
+}
+
+.span3 section:after{
+  content: " ";
+  padding: 0;
+  margin: 0;
+  width: 260px;
+  position: relative;
+  top: -32px;
+  line-height: 0px
+}
+
+.spots section:after{
+  content: none;
+
+}
+
+div.span3:after, .spots:after{
+  content:".";
+  display:block;
+  clear:both;
+  height:0;
+  visibility:hidden
+}
+
+.accom-options{
+  background-color: white;
+  width: 170px;
+  margin: 20px 40px 20px 40px;
+  padding: 5px 15px 5px 15px;
+  font-weight: bold;
+  text-align: center;
+}
+.spots section{
+  width: 240px;
+  margin: 5px auto 20px auto;
+}
+.morning{
+}
+.number{
+  background-color:  #fee9a6;
+  text-align: center;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 7px 7px 0px 0px;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.pict, .spots h3, .category, .star, .tags{
+  margin: 0 10px 0 10px;
+  font-size: 1em;
+  line-height: 20px;
+}
+.spots details{
+  text-align: right;
+  margin-right: 10px
+}
+
+.spots .time, .spots .budget{
+  width: 60px;
+  margin: 5px 15px 5px 15px;
+  float: left;
+  text-align: center;
+}
+
+.night{
+
+}
+div.span9{
+  margin: 0
+}
+
+div#map_canvas{
+  background: url(../assets/map.png);
+  background-size: 100% 100%;
+  margin: 0;
+}
+
+
+div{
+}
+
+.tagline{
+  color:  #4e7573
+}
+
+label, input{
+  float: left;
+}
+
+#title h3{
+  margin-bottom: 0;
+}
+
+ul.themeTags{
+  margin: 0 25px 0 0;
+}
+
+ul.themeTags > li, ul.themeTags > a{
+  float: left;
+  margin: 5px 10px 10px 0;
+  list-style-type: none;
+}
+ul.themeTags > li{
+  padding: 5px 10px 5px 10px;
+  background: #fee9a6;
+  border-radius: 5px;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+}
+
+
+.planHeader{
+  width: 97%;
+  margin: 15px 0px 5px 0;
+  padding: 0 0 5px 10px;
+  background-image: linear-gradient(to bottom, #fff7ee, #feeeb4);
+  background-repeat: repeat-x;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+  border-radius: 15px;
+
+  -webkit-box-shadow: 1px 1px 3px 0px #9a9a9a;
+  -moz-box-shadow: 1px 1px 3px 0px #9A9A9A;
+  box-shadow: 1px 1px 5px 1px #9A9A9A;
+}
+
+div.lengthBudget > h5, div.lengthBudget > a{
+  float: left;
+  margin: 10px 20px 10px 0;
+  padding: 0;
+}
+.addButton{
+  width: 500px;
+}
+
+div.ratingReviews > h5, div.ratingReviews > a{
+  float: left;
+  margin: 10px 20px 10px 0;
+}
+div.profileInfo, img#userProfile {
+  float: left;
+  margin: 0px 35px 10px 10px;
+}
+
+img#userProfile{
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin:0;
+}
+
+.photoviewer, .mapDiv, .photoviewer ul{
+  margin: 0;
+}
+div#photoContainer{
+  width: 99%;
+
+}
+
+.photoNav{
+  margin: 4px;
+  float:left;
+  width: 80px;
+  height: 68px;
+}
+
+li.photoNav img {
+  border-radius: 3px;
+  box-shadow: 0px 2px 3px 1px #9A9A9A;
+}
+li.photoNav.middle img {
+  border-radius: 3px;
+  box-shadow: 0px 2px 4px 2px #9A9A9A;
+}
+
+.photoNav.middle{
+  margin: 4px;
+  float:left;
+  width: 98px;
+  height: 72px;
+}
+
+.arrow{
+  width: 32px;
+  height: 32px;
+  float:left;
+  margin-top: -405px;
+  opacity: 0.7;
+}
+.arrow.right{
+  float: right;
+}
+
+div#mapButtonDiv{
+  margin:0 40px 0 0;
+  width: 460px;
+}
+
+#map_canvas{
+  margin: 0;
+  height:389px;
+  width: 99%;
+  float: right;
+}
+
+.mapButton {
+  float: right;
+  margin: -5px 3px 0 3px;
+  padding: 10px 8px 0px 8px;
+  height: 35px;
+  border-radius: 0 0 10px 10px;
 }

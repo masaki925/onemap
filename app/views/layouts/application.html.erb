@@ -22,38 +22,37 @@
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Onemap</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav pull-left">
-              <li><%= link_to "users", "/users"  %></li>
-              <li><%= link_to "plans", "/plans"  %></li>
-              <li><%= link_to "spots", "/spots"  %></li>
-            </ul>
             <ul class="nav pull-right">
+              <!--Country in mind?-->
+              <li><%= text_field '行きたい国は?', '行きたい国は?' %></li>
+              <li><%= link_to "ヘルプ", "#" %></li>
+            </ul>
+          </div>
+          <div class="container-fluid">
+            <ul class="nav pull-right">
+              <!--Log In and Log Out-->
               <% if current_user %>
-                <li><a>Hello <%= current_user.username %></a></li>
-                <li><%= link_to "Log out", logout_path %></li>
+                  <li><%= link_to "ログアウト", logout_path %></li>
               <% else %>
-                <li><%= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %></li>
+                  <li><%= link_to 'ログイン フェイスブックで', auth_at_provider_path(:provider => :facebook) %></li>
               <% end %>
             </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+            <a class="brand" href="/">one mappp</a>
+            <ul class="nav pull-left">
+              <!--plan-->
+              <li><%= link_to "マイプラン", "/plans", :class => "activeNav"  %></li>
+              <!--list-->
+              <li><%= link_to "お気に入り", "/spots"  %></li>
+              <!--browse-->
+              <li><%= link_to "プランを検索", "/users"  %></li>
+            </ul>
+          </div>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
+    <div class="container">
+      <%= bootstrap_flash %>
+      <%= yield %>
 
       <footer>
         <p>&copy; Wanderlust 2013 <%= " - " + Time.now.strftime('%Y') if Time.now.strftime('%Y') != '2013' %></p>
