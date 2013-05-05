@@ -5,7 +5,6 @@ $ ->
   # map funcs start -----------------------------------
   exports = this
   mapOptions =
-    center: new google.maps.LatLng(-34.397, 150.644),
     zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   map = new google.maps.Map $('#map_canvas').get(0), mapOptions
@@ -13,7 +12,6 @@ $ ->
   markersArray = []
   exports.infowindow = new google.maps.InfoWindow()
   exports.service = new google.maps.places.PlacesService(map)
-  directionsDisplay = new google.maps.DirectionsRenderer()
   directionsService = new google.maps.DirectionsService()
   bounds = new google.maps.LatLngBounds()
 
@@ -24,15 +22,26 @@ $ ->
   lng_inputs = spots.find("input").filter( ->
     this.id == "longitude" or this.id.match(/.*_spot_attributes_lng$/)
   )
+  ref_inputs = spots.find("input").filter( ->
+    this.id == "google_reference" or this.id.match(/.*_spot_attributes_google_reference$/)
+  )
+
+  spotsLatLng = []
   waypoints = []
+  googleRef = []
+
   if spots.length > 0
     spots.each (index) ->
+      latlng = new google.maps.LatLng(lat_inputs[index].value, lng_inputs[index].value)
+      spotsLatLng.push latlng
+      googleRef.push ref_inputs[index].value
       switch index
-        when 0, spots.length - 1
+        when 0
+          exports.startpoint = spotsLatLng[index]
+        when spots.length - 1
+          exports.destination = spotsLatLng[index]
         else
-          waypoints.push location:new google.maps.LatLng(lat_inputs[index].value, lng_inputs[index].value)
-    exports.startpoint = new google.maps.LatLng(lat_inputs[0].value, lng_inputs[0].value)
-    exports.destination = new google.maps.LatLng(lat_inputs[spots.length - 1].value, lng_inputs[spots.length - 1].value)
+          waypoints.push location: spotsLatLng[index]
   else
     city_name = $("#city_name").text()
     geocoder = new google.maps.Geocoder()
@@ -43,13 +52,22 @@ $ ->
         destination = results[0].geometry.location
         map.setCenter destination
         exports.destination = destination
-
-
+  console.log waypoints
   request =
     origin: exports.startpoint,
     waypoints: waypoints,
     destination: exports.destination
     travelMode: google.maps.TravelMode.WALKING
+
+  directionsService.route request, (results, status) ->
+    if status is google.maps.DirectionsStatus.OK
+      createGMarker(spotsLatLng, googleRef)
+      rendererOptions =
+        map: map
+        suppressInfoWindows: true
+        suppressMarkers: true
+      directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
+      directionsDisplay.setDirections(results)
 
   $('.span3').find('button.restaurant').click (e) ->
     clearOverlays()
@@ -79,10 +97,24 @@ $ ->
       types: ['lodging']
     searchSpots(request)
 
-  directionsService.route request, (results, status) ->
-    if status is google.maps.DirectionsStatus.OK
-      directionsDisplay.setDirections(results)
-      directionsDisplay.setMap(map)
+  createGMarker = (spotslatlng, googleref) ->
+    console.log spotslatlng
+    console.log googleref
+    for i in [0..googleref.length - 1]
+      createSpotMarker(spotslatlng[i], googleref[i])
+
+  createSpotMarker = (spotslatlng, googleref) ->
+    marker = new google.maps.Marker
+      map: map,
+      position: spotslatlng
+    request =
+      reference: googleref
+    exports.service.getDetails request, (details, status) ->
+      google.maps.event.addListener marker, 'click', ->
+        console.log details
+        info = infoContent(details, details)
+        exports.infowindow.setContent(info)
+        exports.infowindow.open map, this
 
   createMarker = (place, i) ->
     placeLoc = place.geometry.location
@@ -101,26 +133,30 @@ $ ->
       reference: place.reference
     exports.service.getDetails request, (details, status) ->
       google.maps.event.addListener marker, 'click', ->
-        infoContent =
-          '<div class="infowindow">' +
-          '<span class="gRef" hidden="true">' + place.reference + '</span>' +
-          '<span class="gLat" hidden="true">' + place.geometry.location.lat() + '</span>' +
-          '<span class="gLng" hidden="true">' + place.geometry.location.lng() + '</span>' +
-          '<span class="gName">' + place.name + '</span>' + '<br />'
-        if details
-          infoContent +=
-            '<span class="gAddr">' + details.formatted_address + '</span>' + '<br />' +
-            '<span class="gWebsite">' + details.website + '</span>' + '<br />' +
-            '<span class="gRating">' + details.rating + '</span>' + '<br />' +
-            '<span class="gTel">' + details.formatted_phone_number + '</span>' + '<br />' +
-            '<img src=' + photosURL(photos, details.icon) + '>' + '<br />'
-        infoContent += '<button class="addSpot">場所追加</button></div>'
-        exports.infowindow.setContent(infoContent)
+        info = infoContent(details, place)
+
+        info += '<button class="addSpot">場所追加</button></div>'
+        exports.infowindow.setContent(info)
         exports.infowindow.open map, this
         $("button.addSpot").on "click", (e) ->
           $("a#add_planday_spot")[0].click()
           calcSpotPosition()
           setRmSpot()
+  infoContent = (details, place) ->
+    info = '<div class="infowindow">'
+    if place
+      info += '<span class="gRef" hidden="true">' + place.reference + '</span>' +
+              '<span class="gLat" hidden="true">' + place.geometry.location.lat() + '</span>' +
+              '<span class="gLng" hidden="true">' + place.geometry.location.lng() + '</span>' +
+              '<span class="gName">' + place.name + '</span>' + '<br />'
+    if details
+      info +=
+        '<span class="gAddr">' + details.formatted_address + '</span>' + '<br />' +
+        '<span class="gWebsite">' + details.website + '</span>' + '<br />' +
+        '<span class="gRating">' + details.rating + '</span>' + '<br />' +
+        '<span class="gTel">' + details.formatted_phone_number + '</span>' + '<br />' +
+        '<img src=' + photosURL(details.photos, details.icon) + '>' + '<br />'
+    info += '</div>'
 
   photosURL = (photos, details) ->
     if photos
