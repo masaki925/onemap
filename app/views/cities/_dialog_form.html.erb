@@ -1,0 +1,12 @@
+<div id="dialog-form" title="Create new plan">
+  <%= simple_form_for(Plan.new) do |f| %>
+    <fieldset>
+      <%= f.input :title, input_html: { value: "my trip to " + @city.try(:name).to_s } %>
+      <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' } %>
+      <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' } %>
+    </fieldset>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

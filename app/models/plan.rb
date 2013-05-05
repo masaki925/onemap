@@ -1,5 +1,5 @@
 class Plan < ActiveRecord::Base
-  attr_accessible :end_datetime, :start_datetime, :title, :valid_f
+  attr_accessible :end_date, :start_date, :title, :valid_f
 
   belongs_to :user
   has_many :plandays

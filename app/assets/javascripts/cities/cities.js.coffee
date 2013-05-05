@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
+  # map funcs start ----------------------------------------------
   exports = this
   mapOptions =
     center: new google.maps.LatLng(-34.397, 150.644), # initialize
@@ -90,6 +91,8 @@ $ ->
       types: ['lodging']
     searchSpots(request)
 
+  # map funcs end   ----------------------------------------------
+
   city_name = $("#city_name").text()
   geocoder = new google.maps.Geocoder()
   geocoder.geocode {'address': city_name}, (results, status) ->
@@ -106,3 +109,20 @@ $ ->
         for i in [0..results.length - 1]
            place = results[i]
            createMarker(place)
+
+  $("#create-plan").click ->
+    $("#dialog-form").dialog( "open" )
+
+  $("#dialog-form").dialog
+    autoOpen: false,
+    height: 400,
+    width: 450,
+    modal: true,
+    buttons:
+      Cancel: ->
+        $(this).dialog("close")
+    close: ->
+      $(this).find("input").filter( ->
+        this.id.match /.*(title|date)$/
+      ).val("")
+

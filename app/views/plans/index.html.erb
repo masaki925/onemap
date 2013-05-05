@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Start datetime</th>
-    <th>End datetime</th>
+    <th>Start date</th>
+    <th>End date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +13,8 @@
 <% @plans.each do |plan| %>
   <tr>
     <td><%= link_to plan.title, plan %></td>
-    <td><%= plan.start_datetime %></td>
-    <td><%= plan.end_datetime %></td>
+    <td><%= plan.start_date%></td>
+    <td><%= plan.end_date%></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
   </tr>
 <% end %>

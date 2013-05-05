@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(:version => 20130503080859) do
   add_index "plandays", ["plan_id"], :name => "index_plandays_on_plan_id"
 
   create_table "plans", :force => true do |t|
-    t.string   "title",                            :null => false
-    t.integer  "user_id",                          :null => false
-    t.date     "start_datetime"
-    t.date     "end_datetime"
-    t.boolean  "valid_f",        :default => true
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.string   "title",                        :null => false
+    t.integer  "user_id",                      :null => false
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "valid_f",    :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "spots", :force => true do |t|

@@ -4,7 +4,7 @@
 
 <div class="row-fluid">
   <div class="span3 createNewPlan">
-    <p><%= link_to "create plan", new_plan_path, :class => "btn" %></p>
+    <p><%= button_tag "create plan", :class => "btn", id: "create-plan" %></p>
 
     <h5 id="city_name"><%= @city.name %></h5>
     <p>
@@ -26,4 +26,6 @@
 </div>
 
 <div id="spot-list"></div>
+
+<%= render "dialog_form" %> 
 

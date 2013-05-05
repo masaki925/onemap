@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.ui.sortable
+//= require jquery.ui.dialog
 //= require twitter/bootstrap
 //= require_directory .
 //= require cocoon

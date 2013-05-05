@@ -61,4 +61,6 @@ gem 'foreman'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger2'
+gem 'debugger'
+# suck this beta ver.
+#gem 'debugger2'
