@@ -47,7 +47,13 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+
+        if http_referer_uri.path =~ /^\/cities/
+          city_id   = http_referer_uri.path.split('/').last
+          city_name = City.find(city_id).try(:name)
+        end
+
+        format.html { redirect_to new_plan_planday_path(@plan, city_name: city_name), notice: 'Plan was successfully created.' }
         format.json { render json: @plan, status: :created, location: @plan }
       else
         format.html { render action: "new" }

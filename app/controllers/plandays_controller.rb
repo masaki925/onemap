@@ -16,7 +16,7 @@ class PlandaysController < ApplicationController
   def new
     @plan = Plan.find(params[:plan_id])
     @planday = Planday.new
-    @city = City.where(name: params[:city]).first if params[:city]
+    @city = City.where(name: params[:city_name]).first if params[:city_name]
 
     respond_to do |format|
       format.html # new.html.erb

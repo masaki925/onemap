@@ -7,8 +7,9 @@ Onemap::Application.routes.draw do
   get "users" => "users#index"
 
   resources :plans, shallow: true do
-    resources :plandays
+    resources :plandays, except: :new
   end
+  get "/plans/:plan_id/plandays/new(/:city_name)" => "plandays#new", as: :new_plan_planday
 
   resources :spots
 
