@@ -2,22 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-#title{
-  margin-top: 15px;
-  color: #3e5e5c;
-  background-color: #fee9a6;
-  padding: 1px 10px 1px 10px;
-
-  background-image: linear-gradient(to bottom, #fff7ee, #feeeb4);
-  background-repeat: repeat-x;
-  border: 1px solid #fedc5f;
-  border-color: #fedc5f #fedc5f #edcb59;
-  border-radius: 15px 15px 0 0;
-
-  -webkit-box-shadow: 1px 1px 3px 0px #9a9a9a;
-  -moz-box-shadow: 1px 1px 3px 0px #9A9A9A;
-  box-shadow: 1px 1px 5px 1px #9A9A9A;
+div{
 }
 
 #title h1{
@@ -32,39 +17,38 @@ ul.nav.nav-pills{
   width: 280px;
 }
 
-.span3{
-  background-color: rgba(169, 189, 182, 0.25);
-  -webkit-box-shadow: 1px 0px 6px 0px #9a9a9a;
-  -moz-box-shadow: 1px 0px 6px 0px #9A9A9A;
-  box-shadow: 1px 0px 6px 0px #9A9A9A;
-}
-
-.span3 h2{
-  color: #3E5E5C;
-  background-color: #fee9a6;
-  padding: 1px 10px 1px 10px;
-  font-size: 1.5em;
-  margin: 0;
-}
-
 .city{
   margin: 0 30px 0 15px;
   font-weight: lighter;
 }
 
-
-.span3 section{
-  height: 135px;
-  background-color: #fee9a6;
-  -webkit-box-shadow: 0px 2px 3px 0px #9a9a9a;
-  -moz-box-shadow: 0px 2px 3px 0px #9A9A9A;
-  box-shadow: 0px 2px 3px 0px #9A9A9A;
-
-  border-radius: 15px;
+section.mainSection > h4{
+  margin: 10px;
 }
 
-div.spots section, .accom-options{
-  background-color: white;
+.span4 section{
+  background-image: linear-gradient(to bottom, #fff7ee, #feeeb4);
+  background-repeat: repeat-x;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+  border-radius: 10px;
+
+  -webkit-box-shadow: 1px 1px 3px 0px #9a9a9a;
+  -moz-box-shadow: 1px 1px 3px 0px #9A9A9A;
+  box-shadow: 1px 1px 5px 1px #9A9A9A;
+}
+
+section.mainSection{
+  margin-top: -5px;
+  padding-bottom: 90px;
+  border-radius: 0 0 15px 15px;
+
+}
+
+div.accom-options{
+  color: white;
+  background-color: #e70033;
+
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -78,26 +62,29 @@ div.spots section, .accom-options{
 }
 
 
-.left-arrow, .date, .right-arrow, .time, .budget{
+.date, .time, .budget{
   background-color: white;
   margin: 15px 15px 10px 15px;
   padding: 0px 5px 0px 5px;
   float: left;
   text-align: center;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+  border-radius: 5px;
 }
 .time, .budget{
-  margin: 15px 15px -10px 15px;
-}
-
-div.date{
-  width: 124px;
-  margin: 10px 15px 5px 15px;
-  padding: 5px 15px 5px 15px;
-}
-.time, .budget{
+  margin: 15px 15px 10px 15px;
   width: 80px;
   padding: 0px 15px 0px 15px;
 }
+
+div.date{
+  text-align: center;
+  width: 124px;
+  margin: 10px 85px 5px 45px;
+  padding: 5px 15px 5px 15px;
+}
+
 span.hour{
   margin-right: 10px
 }
@@ -105,7 +92,7 @@ span.currency{
   margin-left: 10px
 }
 
-.span3 section:after{
+.span4 section:after{
   content: " ";
   padding: 0;
   margin: 0;
@@ -117,10 +104,9 @@ span.currency{
 
 .spots section:after{
   content: none;
-
 }
 
-div.span3:after, .spots:after{
+div.span4:after, .spots:after{
   content:".";
   display:block;
   clear:both;
@@ -137,17 +123,17 @@ div.span3:after, .spots:after{
   text-align: center;
 }
 .spots section{
-  width: 240px;
+  width: 100%;
   margin: 5px auto 20px auto;
 }
-.morning{
-}
+
+
 .number{
   background-color:  #fee9a6;
   text-align: center;
   -moz-border-radius: 0px;
   -webkit-border-radius: 7px 7px 0px 0px;
-  border-radius: 7px 7px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .pict, .spots h3, .category, .star, .tags{
@@ -162,25 +148,9 @@ div.span3:after, .spots:after{
 
 .spots .time, .spots .budget{
   width: 60px;
-  margin: 5px 15px 5px 15px;
+  margin: 5px 28px 5px 28px;
   float: left;
   text-align: center;
-}
-
-.night{
-
-}
-div.span9{
-  margin: 0
-}
-
-div#map_canvas{
-  background-size: 100% 100%;
-  margin: 0;
-}
-
-
-div{
 }
 
 .tagline{
@@ -200,8 +170,8 @@ ul.themeTags{
 }
 
 ul.themeTags > li, ul.themeTags > a{
-  float: left;
-  margin: 5px 10px 10px 0;
+  float: right;
+  margin: 7px 10px 0px 0;
   list-style-type: none;
 }
 ul.themeTags > li{
@@ -212,8 +182,12 @@ ul.themeTags > li{
   border-color: #fedc5f #fedc5f #edcb59;
 }
 
+ul.themeTags > li.tagInput > input{
+  margin: 0;
+  width: 100px;
+}
 
-.planHeader{
+.planHeader, #title{
   width: 97%;
   margin: 15px 0px 5px 0;
   padding: 0 0 5px 10px;
@@ -227,12 +201,20 @@ ul.themeTags > li{
   -moz-box-shadow: 1px 1px 3px 0px #9A9A9A;
   box-shadow: 1px 1px 5px 1px #9A9A9A;
 }
+#title{
+  border-radius: 15px 15px 0 0;
+}
 
 div.lengthBudget > h5, div.lengthBudget > a{
   float: left;
   margin: 10px 20px 10px 0;
   padding: 0;
 }
+div.lengthBudget > input{
+  width: 50px;
+  margin-bottom: 5px;
+}
+
 .addButton{
   width: 500px;
 }
@@ -289,28 +271,57 @@ li.photoNav.middle img {
   height: 32px;
   float:left;
   margin-top: -405px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .arrow.right{
   float: right;
 }
 
 div#mapButtonDiv{
-  margin:0 40px 0 0;
-  width: 460px;
+  margin: 0 0 0 20px;
+  width: 600px;
+  background: none;
+  box-shadow: none;
 }
 
 #map_canvas{
   margin: 0;
-  height:389px;
+  height:387px;
   width: 99%;
   float: right;
+  box-shadow: 1px 1px 5px 1px #9A9A9A;
+}
+
+div#map_canvas{
+  margin-top: 3px;
 }
 
 .mapButton {
-  float: right;
+  float: left;
   margin: -5px 3px 0 3px;
   padding: 10px 8px 0px 8px;
   height: 35px;
   border-radius: 0 0 10px 10px;
+}
+
+div.mapSearch, div.mapSearch > a, div.mapSearch > input{
+  float: right;
+  margin: 0;
+}
+div.mapSearch > input{
+  width: 120px;
+  box-shadow: 1px 1px 2px 1px #9A9A9A;
+  border-radius: 10px 4px 4px 10px;
+}
+.btn.mapSearch{
+  border-radius:  4px 10px 10px 4px;
+}
+
+
+form.edit_planday, form.edit_planday > hr, form.edit_planday > div{
+}
+#formStuff{
+}
+div.pull-left.addButton{
+  height: 30px;
 }
