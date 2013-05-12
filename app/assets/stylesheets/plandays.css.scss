@@ -337,12 +337,16 @@ div.pull-left.addButton{
 div.spotList{
   background:url(/assets/onikiri.png);
   height: 500px;
-}
-div.spotList.span3.pull-right{
   margin: 32px 15px 0 -100px;
+  position: relative;
+  z-index: 1000 ;
+
 }
 
-div.span5.pull-right.mapDiv.narrow{
+div.spotList > img{
+}
+
+div.span5.pull-left.mapDiv.narrow{
   margin-left: 5px;
   width: 46%;
 }
