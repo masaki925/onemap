@@ -1,12 +1,12 @@
 <% content_for :javascript_includes do %>
-  <%= javascript_include_tag "plandays/plandays" %>
+    <%= javascript_include_tag "plandays/plandays" %>
 <% end %>
 
 <div class="row" >
   <div class="row" id="title">
     <div class="span12">
       <div class="pull-left">
-        <h3 id="planName"><%= link_to @planday.plan.title, @planday.plan %> Day <%= @planday.day %></h3>
+        <h3 id="planName"><%= link_to "#"%> New York Day 1</h3>
       </div>
       <div class="pull-right span7">
         <ul  class="themeTags">
@@ -19,8 +19,8 @@
       </div>
     </div>
 
-      <!-- Travel Group -->
-      <div class="span12">
+    <!-- Travel Group -->
+    <div class="span12">
       <div class="pull-right">
         <ul class="travelGroup">
           <li>
@@ -53,8 +53,8 @@
       </div>
 
       <div class="pull-left addButton">
-          <%= link_to 'Back', plan_path(@planday.plan), class: 'btn' %>
-          <%= link_to 'Done Editing', @planday, class: 'btn' %>
+        <%= link_to 'Back', '#', class: 'btn' %>
+        <%= link_to 'Done Editing', '#', class: 'btn' %>
       </div>
 
       <!--Back and Edit Buttons-->
@@ -66,11 +66,11 @@
     <div class="span4 pull-left planSideBar">
       <section class="mainSection">
 
-      <!-- Main Section Title-->
-      <h4>New York<span class="city">America</span></h4>
-      <div class="date">28/November/2013</div>
-      <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
-      <div class="budget"><span class="currency">$</span>153.21</div>
+        <!-- Main Section Title-->
+        <h4>New York<span class="city">America</span></h4>
+        <div class="date">28/November/2013</div>
+        <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
+        <div class="budget"><span class="currency">$</span>153.21</div>
       </section>
       <div class="accom-options btn">
         Accommodations
@@ -103,11 +103,15 @@
         </section>
         <div class="night"></div>
 
-        <div id="formStuff"><%= render 'form', action: 'update' %></div>
+        <div id="formStuff"></div>
       </div>
 
     </div>
-    <div class="span8 pull-right mapDiv">
+    <div class="spotList span3 pull-right">
+
+    </div>
+
+    <div class="span5 pull-right mapDiv narrow">
       <div class="span3 pull-left" id="mapButtonDiv">
         <button class="plans btn mapButton">Nearby Plans</button>
         <button class="restaurant btn mapButton">Restaurants</button>

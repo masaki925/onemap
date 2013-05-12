@@ -241,9 +241,9 @@ div.ratingReviews > h5, div.ratingReviews > a{
   margin: 0;
 }
 
-div.span8.pull-right.mapDiv{
+div.pull-right.mapDiv{
   float:left;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 div#photoContainer{
@@ -287,7 +287,7 @@ li.photoNav.middle img {
 }
 
 div#mapButtonDiv{
-  margin: 0 0 0 20px;
+  margin: 0 0 0 3px;
   width: 600px;
   background: none;
   box-shadow: none;
@@ -307,14 +307,13 @@ div#map_canvas{
 
 .mapButton {
   float: left;
-  margin: -5px 3px 0 3px;
+  margin: -5px 1px 0 1px;
   padding: 10px 8px 0px 8px;
   height: 35px;
   border-radius: 0 0 10px 10px;
 }
 
 div.mapSearch, div.mapSearch > a, div.mapSearch > input{
-  float: right;
   margin: 0;
 }
 div.mapSearch > input{
@@ -333,4 +332,19 @@ form.edit_planday, form.edit_planday > hr, form.edit_planday > div{
 }
 div.pull-left.addButton{
   height: 30px;
+}
+
+div.spotList{
+  background:url(/assets/bucketlist.png);
+  height: 500px;
+}
+div.spotList.span3.pull-right{
+  width: 21.5%;
+  margin-right: 15px;
+  margin-top: 32px;
+}
+
+div.span5.pull-right.mapDiv.narrow{
+  margin-left: 5px;
+  width: 44%;
 }

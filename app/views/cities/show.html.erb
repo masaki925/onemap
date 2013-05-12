@@ -2,23 +2,25 @@
   <%= javascript_include_tag "cities/cities" %>
 <% end %>
 
-<div class="row-fluid">
-  <div class="span3 createNewPlan">
-    <p><%= button_tag "create plan", :class => "btn", id: "create-plan" %></p>
+
+<div class="row" id="title">
+  <div class="span12">
+    <%= button_tag "create plan", :class => "btn", id: "create-plan" %>
+    <%= link_to 'Back', cities_path, :class => 'btn' %>
+
 
     <h5 id="city_name"><%= @city.name %></h5>
-    <p>
       <b>Country: </b>
       <%= @city.country_code %>
-    </p>
-    <button class="restaurant">restaurant</button>
-    <button class="hotel">hotel</button>
-    <button class="sight">sight</button>
-
-    <br>
-    <%= link_to 'Back', cities_path, :class => 'btn' %>
+    <div class="span3">
+        <button class="restaurant">restaurant</button>
+        <button class="hotel">hotel</button>
+        <button class="sight">sight</button>
+    </div>
   </div>
+</div>
 
+<div class="row">
   <div class="span9">
     <div id="map_canvas"></div>
   </div>

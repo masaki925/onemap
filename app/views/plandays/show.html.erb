@@ -28,7 +28,7 @@
           <div class="profileInfo">
             <a href="#"><h5>Justin</h5></a>
             <a href="#">31416 points</a><br>
-            <a href="#">MASTER level</a>
+            <a href="#">Master level</a>
           </div>
         </li>
         <li><img id="userProfile" src="/assets/masaki.jpg">
@@ -100,16 +100,6 @@
       <button class="sight btn mapButton">Sights</button>
     </div>
 
-    <div class="planday_spots">
-      <% @spots.each do |spot| %>
-        <li>
-          <%= spot.name %>
-          <%= hidden_field_tag :latitude, spot.lat %>
-          <%= hidden_field_tag :longitude, spot.lng %>
-          <%= hidden_field_tag :google_reference, spot.google_reference %>
-        </li>
-      <% end %>
-    </div>
     <div id="map_canvas">
     </div>
   </div>
@@ -123,11 +113,12 @@
       <h4>New York<span class="city">America</span></h4>
       <div class="date">28/November/2013</div>
       <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
-      <div class="budget"><span class="currency">KES</span>153.21</div>
+      <div class="budget"><span class="currency">$</span>153.21</div>
     </section>
     <div class="accom-options btn">
       Accommodations
     </div>
+
     <div class="spots">
       <div class="morning"></div>
       <section>
@@ -156,6 +147,17 @@
       </section>
       <div class="night"></div>
 
+      <div class="planday_spots">
+        <% @spots.each do |spot| %>
+            <li>
+              <%= spot.name %>
+              <%= hidden_field_tag :latitude, spot.lat %>
+              <%= hidden_field_tag :longitude, spot.lng %>
+              <%= hidden_field_tag :google_reference, spot.google_reference %>
+            </li>
+        <% end %>
+      </div>
+
       <div id="formStuff"><%= render 'form', :action => 'update' %></div>
       <div>
         <div class="spots">
@@ -169,9 +171,7 @@
   </div>
 
   <div class="span8 pull-left planSideBar">
-     <h2>Full Details of last clicked spot:</h2>
-    <h4>Spot Reviews</h4>
-    <h4>Spot Photos</h4>
+
   </div>
 </div>
 
