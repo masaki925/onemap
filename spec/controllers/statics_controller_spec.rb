@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StaticController do
+describe StaticsController do
 
   describe "GET 'favorite'" do
     it "returns http success" do

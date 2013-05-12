@@ -1,0 +1,72 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tagline{
+  color:  #4e7573
+}
+div.createNewPlan {
+  padding: 21px 20px 15px 40px;
+  height: 40px;
+  margin: 0 auto;
+
+  background-color: #ffeb91;
+  background-image: -moz-linear-gradient(top, #ff7a72, #ffeb91);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7a72), to(#e70033));
+  background-image: -webkit-linear-gradient(top, #ff7a72, #e70033);
+  background-image: -o-linear-gradient(top, #ff7a72, #e70033);
+  background-image: linear-gradient(to bottom, #fff7ee, #feeeb4);
+  background-repeat: repeat-x;
+  border: 1px solid #fedc5f;
+  border-color: #fedc5f #fedc5f #edcb59;
+  border-radius: 15px;
+
+  -webkit-box-shadow: 1px 1px 6px 0px #9a9a9a;
+  -moz-box-shadow: 1px 1px 6px 0px #9A9A9A;
+  box-shadow: 2px 2px 10px 1px #9A9A9A;
+}
+
+select#country,label.newPlanInput, input.newPlanInput, li.newPlanInput{
+  float: left;
+  margin: 0px 30px 0px 5px ;
+}
+
+ul.newPlanInput > li > label{
+  margin: 8px 0 0 0;
+}
+
+.country, select#country{
+  width: 180px;
+  margin: 0;
+  padding: 0;
+}
+
+.btn.btn-primary.btn-large{
+  position: relative;
+  margin: -10px 0 0 20px;
+  padding: 15px 30px 15px 30px;
+  border-radius: 25px;
+}
+
+#countryBrowse.btn{
+  float: left;
+}
+input.browseInput {
+  margin: 0 0 0 30px;
+}
+label.browseInput {
+  margin: 0 0 0 30px;
+}
+
+div.examplePlan{
+  background:url(/assets/spainCastl.JPG);
+  background-size: 100% 100%;
+  border: 1px solid #aaaaaa;
+  height: 300px;
+  margin: 20px 11px 0px 0px;
+  -webkit-box-shadow: 1px 1px 4px 0px #9a9a9a;
+  -moz-box-shadow: 1px 1px 4px 0px #9A9A9A;
+  box-shadow: 1px 1px 7px 1px #9A9A9A;
+  border-radius: 5px;
+}
+

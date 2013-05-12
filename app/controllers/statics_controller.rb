@@ -1,4 +1,4 @@
-class StaticController < ApplicationController
+class StaticsController < ApplicationController
   def favorite
   end
 
