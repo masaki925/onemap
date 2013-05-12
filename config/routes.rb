@@ -1,4 +1,8 @@
 Onemap::Application.routes.draw do
+  get "static/favorite"
+
+  get "static/spotsearch"
+
   resources :cities
 
   get "areas/cities" => "areas#cities", :as => :cities_area
