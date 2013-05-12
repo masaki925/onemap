@@ -2,7 +2,6 @@
   <% if @planday.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@planday.errors.count, "error") %> prohibited this planday from being saved:</h2>
-
       <ul>
       <% @planday.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div id="planday_spots" class="planday_spots">
     <ul id="planday_spots" class="connectedSortable">
       <% @planday_spots.each do |pd_spot| %>

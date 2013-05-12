@@ -150,8 +150,10 @@ ul.nav.pull-right > li > a{
 
 }
 
-div{
+#map img{
+    max-width: none !important;
 }
+
 
 .mapButton{
     text-shadow: 0px 0px 6px #385957;

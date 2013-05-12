@@ -54,12 +54,16 @@
               <b><%= link_to "[+] 友達に聞く", "#", class: "btn" %></b>
             </div>
           </li>
-          <li><img id="userProfile" src="/assets/profilePic.jpg">
+          <li>
+            <%= image_tag "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" %>
+            <img id="userProfile" src="/assets/profilePic.jpg">
             <div class="profileInfo">
               <a href="#"><h5>Justin</h5></a>
             </div>
           </li>
-          <li><img id="userProfile" src="/assets/masaki.jpg">
+          <li>
+            <%= image_tag "http://maps.google.com/mapfiles/ms/icons/green-dot.png" %>
+            <img id="userProfile" src="/assets/masaki.jpg">
             <div class="profileInfo">
               <a href="#"><h5>Masaki</h5></a>
             </div>
@@ -131,7 +135,6 @@
         <div class="mapSearch">
           <%= link_to '検索', '#', class: 'btn mapSearch' %>
           <%= text_field 'Theme_or_keyword', 'Theme_or_keyword' %>
-
         </div>
       </div>
 
