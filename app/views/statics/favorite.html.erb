@@ -32,15 +32,15 @@
   <div class="row" id="title">
     <div class="span12">
       <div class="pull-left">
-        <h3 id="planName"><%= link_to "#"%> New York Day 1</h3>
+        <h3 id="planName">ニューヨーク 1日目</h3>
       </div>
+
       <div class="pull-right span7">
         <ul  class="themeTags">
           <li><%= text_field 'Theme_or_keyword', 'Theme_or_keyword' %>
-            <b><%= link_to " [+] Add Tag", "#" %></b></li>
-          <li>Culture [x]</li>
-          <li>Romantic [x]</li>
-          <a href="#">Tags</a>
+            <b><%= link_to " [+] タグ 追加", "#" %></b></li>
+          <li>ビジネス[x]</li>
+          <li>公園[x]</li>
         </ul>
       </div>
     </div>
@@ -51,36 +51,26 @@
         <ul class="travelGroup">
           <li>
             <div class="profileInfo">
-              <b><%= link_to " [+] Share", "#" %></b>
+              <b><%= link_to "[+] 友達に聞く", "#", class: "btn" %></b>
             </div>
           </li>
           <li><img id="userProfile" src="/assets/profilePic.jpg">
             <div class="profileInfo">
               <a href="#"><h5>Justin</h5></a>
-              <a href="#">31416 points</a><br>
-              <a href="#">Master level</a>
             </div>
           </li>
           <li><img id="userProfile" src="/assets/masaki.jpg">
             <div class="profileInfo">
               <a href="#"><h5>Masaki</h5></a>
-              <a href="#">216 points</a><br>
-              <a href="#">Captain level</a>
             </div>
           </li>
-          <a href="#">Travel Group</a>
         </ul>
       </div>
 
       <!-- Duration and Currency + Budget   -->
       <div class="pull-left lengthBudget">
-        <label>Budget: </label><%= text_field 'Budget', 'Budget' %>
-        <button class="currency">Currency</button>
-      </div>
-
-      <div class="pull-left addButton">
-        <%= link_to 'Back', '#', class: 'btn' %>
-        <%= link_to 'Done Editing', '#', class: 'btn' %>
+        <label>予算: </label><%= text_field 'Budget', 'Budget' %>
+        <button class="currency">通貨</button>
       </div>
 
       <!--Back and Edit Buttons-->
@@ -93,38 +83,36 @@
       <section class="mainSection">
 
         <!-- Main Section Title-->
-        <h4>New York<span class="city">America</span></h4>
-        <div class="date">28/November/2013</div>
-        <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
-        <div class="budget"><span class="currency">$</span>153.21</div>
+        <h4>ニューヨーク<span class="city">アメリカ</span></h4>
+        <div class="date">28/11/2013</div>
+        <div class="time">2<span class="hour">時間</span>0<span class="min">分</span></div>
+        <div class="budget">1,000<span class="currency">円</span></div>
       </section>
-      <div class="accom-options btn">
-        Accommodations
-      </div>
+      <hr>
       <div class="spots">
         <div class="morning"></div>
         <section>
           <div class="number">1</div>
           <img class="pict" src="/assets/6695412701_NYcentralpark.jpg">
-          <h3>Central Park</h3>
-          <div class="category">Park</div>
+          <h3>セントラルパーク</h3>
+          <div class="category">公園</div>
           <div class="star">★★★★☆</div>
-          <div class="tags">#Nature, Photography</div>
-          <div class="budget"><span class="currency">$</span>0</div>
-          <div class="time">1<span class="hour">hour</span></div>
-          <details>See Details</details>
+          <div class="tags">自然, 写真</div>
+          <div class="budget">1,000<span class="currency">円</span></div>
+          <div class="time">1<span class="hour">時間</span></div>
+          <details>セントラルパークの説明...</details>
 
         </section>
         <section>
           <div class="number">2</div>
           <img class="pict" src="/assets/8726601675_NYbatterypark.jpg">
-          <h3>Financial District</h3>
-          <div class="category">Shopping</div>
+          <h3>ウォール街</h3>
+          <div class="category">ビジネス</div>
           <div class="star">★★★☆☆</div>
-          <div class="tags">#City, Business</div>
-          <div class="budget"><span class="currency">$</span>0</div>
-          <div class="time">1<span class="hour">hour</span></div>
-          <details>See Details</details>
+          <div class="tags">街, ビジネス</div>
+          <div class="budget">0<span class="currency">円</span></div>
+          <div class="time">1<span class="hour">時間</span></div>
+          <details>ウォール街の説明...</details>
 
         </section>
         <div class="night"></div>
@@ -136,12 +124,12 @@
 
     <div class="span5 pull-left mapDiv narrow">
       <div class="span3 pull-left" id="mapButtonDiv">
-        <button class="plans btn mapButton">Nearby Plans</button>
-        <button class="restaurant btn mapButton">Restaurants</button>
-        <button class="hotel btn mapButton active">Hotels</button>
-        <button class="sight btn mapButton">Sights</button>
+        <button class="plans btn mapButton active">お気に入り</button>
+        <button class="restaurant btn mapButton">レストラン</button>
+        <button class="hotel btn mapButton">ホテル</button>
+        <button class="sight btn mapButton">観光地</button>
         <div class="mapSearch">
-          <%= link_to 'Search', '#', class: 'btn mapSearch' %>
+          <%= link_to '検索', '#', class: 'btn mapSearch' %>
           <%= text_field 'Theme_or_keyword', 'Theme_or_keyword' %>
 
         </div>
