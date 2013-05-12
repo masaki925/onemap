@@ -7,37 +7,52 @@
   <!--Title + Tags + Add PLan Button -->
   <div class="span12">
     <div class="pull-left">
-      <h3><%= link_to @planday.plan.title, @planday.plan %> Day <%= @planday.day %></h3>
+      <h3 id="planName"><%= link_to @planday.plan.title, @planday.plan %> Day <%= @planday.day %></h3>
     </div>
-    <div class="pull-right">
+    <div class="pull-right span7">
       <ul  class="themeTags">
-        <a href="#">Tags</a>
         <li>Culture</li>
         <li>Photography</li>
         <li>Romantic</li>
+        <a href="#">Tags</a>
       </ul>
     </div>
   </div>
 
   <div class="span12">
 
-    <!-- Creator Image + Creator Name -->
-    <div class="pull-right createdBy">
-      <img id="userProfile" src="/assets/profilePic.jpg">
-      <div class="profileInfo">
-        <a href="#"><h5>Created by Justin</h5></a>
-        <a href="#">31416 points</a><br>
-        <a href="#">MASTER level</a>
-      </div>
+    <!-- Travel Group -->
+    <div class="pull-right">
+      <ul class="travelGroup">
+        <li><img id="userProfile" src="/assets/profilePic.jpg">
+          <div class="profileInfo">
+            <a href="#"><h5>Justin</h5></a>
+            <a href="#">31416 points</a><br>
+            <a href="#">MASTER level</a>
+          </div>
+        </li>
+        <li><img id="userProfile" src="/assets/masaki.jpg">
+          <div class="profileInfo">
+            <a href="#"><h5>Masaki</h5></a>
+            <a href="#">216 points</a><br>
+            <a href="#">Captain level</a>
+          </div>
+        </li>
+        <a href="#">Travel Group</a>
+      </ul>
     </div>
 
     <!-- Duration (hours) + Rating + Reviews + Currency + Budget   -->
     <div class="pull-left lengthBudget">
       <h5>3.1 ★★★☆☆ <a href="#">(See Reviews)</a></h5>
+    </div>
+
+    <div class="pull-left lengthBudget">
       <h5>$200</h5>
       <h5><button class="currency">Currency</button></h5><br>
-
     </div>
+
+
     <div class="pull-left addButton">
       <a class="btn">Add to my Plan</a>
 
@@ -53,17 +68,17 @@
   <div class="span6 photoviewer">
     <div id="photoNav">
       <ul>
-        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
-        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
-        <li class="photoNav middle"><img src="/assets/italyThumb.jpg"></li>
-        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
-        <li class="photoNav thumb"><img src="/assets/italyThumb.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/8726601675_NYbatterypark.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/8723579515_NY.jpg"></li>
+        <li class="photoNav middle"><img src="/assets/6695412701_NYcentralpark.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/8724388396_NY.jpg"></li>
+        <li class="photoNav thumb"><img src="/assets/8724414420_NY.jpg"></li>
       </ul>
     </div>
     <div id="photoContainer">
       <!--The page Container is a ul list of photos-->
       <ul>
-        <li><img src="/assets/italyTower.JPG"></li>
+        <li><img src="/assets/6695412701_NYcentralpark.jpg"></li>
         <li></li>
         <li></li>
         <li></li>
@@ -105,38 +120,38 @@
     <section class="mainSection">
 
       <!-- Main Section Title-->
-      <h4>United Kingdom<span class="city">London</span></h4>
+      <h4>New York<span class="city">America</span></h4>
       <div class="date">28/November/2013</div>
       <div class="time">15<span class="hour">h</span>20<span class="min">m</span></div>
-      <div class="budget">15,321<span class="currency">KES</span></div>
+      <div class="budget"><span class="currency">KES</span>153.21</div>
     </section>
-    <div class="accom-options">
-      Accomodiation options
+    <div class="accom-options btn">
+      Accommodations
     </div>
     <div class="spots">
       <div class="morning"></div>
       <section>
-        <div class="number">0</div>
-        <img class="pict">pic</img>
-        <h3>Hotel Circle South, San Diego, CA</h3>
-        <div class="category">Museum</div>
-        <div class="star">★★☆☆☆</div>
-        <div class="tags">#Art, animal, wild life</div>
-        <div class="budget">150<span class="currency">KES</span></div>
+        <div class="number">1</div>
+        <img class="pict" src="/assets/6695412701_NYcentralpark.jpg">
+        <h3>Central Park</h3>
+        <div class="category">Park</div>
+        <div class="star">★★★★☆</div>
+        <div class="tags">#Nature, Photography</div>
+        <div class="budget"><span class="currency">$</span>0</div>
         <div class="time">1<span class="hour">hour</span></div>
-        <details>See datails</details>
+        <details>See Details</details>
 
       </section>
       <section>
-        <div class="number">1</div>
-        <img class="pict">pic</img>
-        <h3>Somewhere Else, Castle Street, Cirencester, United Kingdom</h3>
-        <div class="category">Museum</div>
-        <div class="star">★★☆☆☆</div>
-        <div class="tags">#Art, animal, wild life</div>
-        <div class="budget">150<span class="currency">KES</span></div>
+        <div class="number">2</div>
+        <img class="pict" src="/assets/8726601675_NYbatterypark.jpg">
+        <h3>Financial District</h3>
+        <div class="category">Shopping</div>
+        <div class="star">★★★☆☆</div>
+        <div class="tags">#City, Business</div>
+        <div class="budget"><span class="currency">$</span>0</div>
         <div class="time">1<span class="hour">hour</span></div>
-        <details>See datails</details>
+        <details>See Details</details>
 
       </section>
       <div class="night"></div>
