@@ -9,6 +9,7 @@ $ ->
   map = new google.maps.Map $('#map_canvas').get(0), mapOptions
   service = new google.maps.places.PlacesService(map)
   infowindow = new google.maps.InfoWindow(minWidth:500)
+  directionsService = new google.maps.DirectionsService()
 
   createSpotMarker = (latlng, ref, color) ->
     iconURL = 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
@@ -37,3 +38,19 @@ $ ->
   createSpotMarker(friendOne,"CpQBggAAAFdB3lCCMv37MHkYUUtOZj0TAT-YT0IqSXF0NZ0W0sMMWaKjhJDaNCqcHCED0YLxUqBbPqIyV3wGsT3v6_AZAiRVxyne_J0P25HbHrwtbe72CaOVoUggNffb6NMTIqeGU0NFhbuEYmheSACga6H7FdJcOvQkYyj4rclM1OFW70OhPfldvckDfB0A_p5IgxHwKBIQsQsGE94etMnGYLEx9a4bMxoUFAmK7qMlVnk86Nq-Su4HONe3p5Y","blue")
   friendTwo = new google.maps.LatLng(40.7736150, -73.97110600000001)
   createSpotMarker(friendTwo,"CnRpAAAAkhBCTSJsbd7AgBX0HTRxKkue7TLP0DjtFQpyc9NXzOLuBVoOSwBoA6ovZWFxfnSeqgSGnSj6V1mhfBA_llPyPf6mzDD2Xl2CBD1NRu_KvQVoqVnLcpMLpLtHQ3Nigdm25QfnTY-h4vATP63U0Bm3JBIQTuU1m3kwffyzIEwgp38_RhoUBS8kY6g327c2DeOfafrdCewDOrs","green")
+
+  request =
+    origin: friendTwo,
+    waypoints: [location: ownerMarker],
+    destination: friendOne
+    travelMode: google.maps.TravelMode.WALKING
+
+  directionsService.route request, (results, status) ->
+    if status is google.maps.DirectionsStatus.OK
+      rendererOptions =
+        map: map
+        suppressInfoWindows: true
+        suppressMarkers: true
+      directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
+      directionsDisplay.setDirections(results)
+
