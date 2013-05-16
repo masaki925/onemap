@@ -32,7 +32,7 @@ $ ->
             '<a href="#myModal" role="button" class="btn" data-toggle="modal">もっと詳しく</a>' +
             '</div>'
 
-
+  markersArray = []
   ownerMarker = new google.maps.LatLng(40.7588950,  -73.9851310)
   createSpotMarker(ownerMarker,"CoQBeAAAAMGrC7pMTj8WiqHbbzwXjg5Gk4US52fyX5BznvENioUx54E52boP7ekKX0mSn2pyc7v3PwHph8daAa90UCeF_0Mg5Pdur4EVLhNkdq3wrTbgLSwiG4vxX-jNWNVY5TJPNVMOqRTWwGoSe285hNHRN1b_EOpeK9FzZVzYsGldpohQEhAijTrT9969v5tWwsqg_EeKGhSDw0m7-ITuXzEWR8WUZPdYU44Ipg","red")
   friendOne = new google.maps.LatLng(40.6892490, -74.04450)
@@ -70,13 +70,31 @@ $ ->
       map: map
       position: placeLoc
       icon: iconURL
+    markersArray.push(marker)
+
+  clearButton = ->
+    $('.span5').find('button.plans').removeClass('active')
+    $('.span5').find('button.hotel').removeClass('active')
+
+  clearOverlays =  ->
+    if markersArray
+      for i of markersArray
+        markersArray[i].setMap null
+    markersArray.length = 0
 
   $('.span5').find('button.hotel').click (e) ->
+    clearButton()
+    clearOverlays()
     request =
       location: ownerMarker
       radius: '3000'
       types: ['lodging']
     searchSpots(request)
+    $('.span5').find('button.hotel').addClass('active')
     $('.spotList').find('img').attr('src', '/assets/hotels.png')
 
-
+  $('.span5').find('button.plans').click (e) ->
+    clearButton()
+    clearOverlays()
+    $('.span5').find('button.plans').addClass('active')
+    $('.spotList').find('img').attr('src', '/assets/onikiri.png')
