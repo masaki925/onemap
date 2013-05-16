@@ -69,7 +69,9 @@ div.examplePlan{
   box-shadow: 1px 1px 7px 1px #9A9A9A;
   border-radius: 5px;
 }
-
+div.spots{
+  margin-left: 50px;
+}
 div.spotList > img{
 width: 100%
 }
@@ -81,9 +83,12 @@ section.mainSection > h4{
 text-align:center
 }
 .date{
-margin: 10px 27% 5px 26%;
+margin: 10px 27% 5px 26% !important;
 }
 .time, .budget{
 margin: 15px 8% 10px 9%;
 width: 22%;
+}
+.timeline {
+  position: absolute;
 }
