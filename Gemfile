@@ -14,6 +14,7 @@ group :test, :development do
   gem 'pry-remote'
   gem 'spork'
   gem 'simplecov'
+  gem 'debugger'
 end
 
 group :development do
@@ -61,6 +62,5 @@ gem 'foreman'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
 # suck this beta ver.
 #gem 'debugger2'
