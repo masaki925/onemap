@@ -10,6 +10,7 @@ $ ->
   service = new google.maps.places.PlacesService(map)
   infowindow = new google.maps.InfoWindow(minWidth:500)
   directionsService = new google.maps.DirectionsService()
+  bounds = new google.maps.LatLngBounds()
 
   createSpotMarker = (latlng, ref, color) ->
     iconURL = 'http://maps.google.com/mapfiles/ms/icons/' + color + '-dot.png'
@@ -53,4 +54,29 @@ $ ->
         suppressMarkers: true
       directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
       directionsDisplay.setDirections(results)
+
+  searchSpots = (request) ->
+    service.search request, (results, status) ->
+      if status is google.maps.places.PlacesServiceStatus.OK
+        for i in [0..results.length - 1]
+           place = results[i]
+           createMarker(place, i)
+
+  createMarker = (place, i) ->
+    placeLoc = place.geometry.location
+    iconNumber = i + 1
+    iconURL = 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-666666/shapecolor-white/shadow-1/border-dark/symbolstyle-color/symbolshadowstyle-no/gradient-bottomtop/number_' + iconNumber + '.png'
+    marker = new google.maps.Marker
+      map: map
+      position: placeLoc
+      icon: iconURL
+
+  $('.span5').find('button.hotel').click (e) ->
+    request =
+      location: ownerMarker
+      radius: '3000'
+      types: ['lodging']
+    searchSpots(request)
+    $('.spotList').find('img').attr('src', '/assets/hotels.png')
+
 
