@@ -94,9 +94,11 @@ $ ->
     searchSpots(request)
     $('.span5').find('button.hotel').addClass('active')
     $('.spotList').find('img').attr('src', '/assets/hotels4.png')
+    $("#select_hotel").show()
 
   $('.span5').find('button.plans').click (e) ->
     clearButton()
     clearOverlays()
     $('.span5').find('button.plans').addClass('active')
     $('.spotList').find('img').attr('src', '/assets/okiniiri.png')
+    $("#select_hotel").hide()
