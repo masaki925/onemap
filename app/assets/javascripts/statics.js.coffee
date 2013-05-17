@@ -57,15 +57,17 @@ $ ->
 
   searchSpots = (request) ->
     service.search request, (results, status) ->
+      max_length = 5
+      max_length = results.length if results.length < 5
       if status is google.maps.places.PlacesServiceStatus.OK
-        for i in [0..results.length - 1]
+        for i in [0..max_length - 1]
            place = results[i]
            createMarker(place, i)
 
   createMarker = (place, i) ->
     placeLoc = place.geometry.location
     iconNumber = i + 1
-    iconURL = 'http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-666666/shapecolor-white/shadow-1/border-dark/symbolstyle-color/symbolshadowstyle-no/gradient-bottomtop/number_' + iconNumber + '.png'
+    iconURL = '/assets/number_' + iconNumber + '.png'
     marker = new google.maps.Marker
       map: map
       position: placeLoc
@@ -91,10 +93,10 @@ $ ->
       types: ['lodging']
     searchSpots(request)
     $('.span5').find('button.hotel').addClass('active')
-    $('.spotList').find('img').attr('src', '/assets/hotels.png')
+    $('.spotList').find('img').attr('src', '/assets/hotels4.png')
 
   $('.span5').find('button.plans').click (e) ->
     clearButton()
     clearOverlays()
     $('.span5').find('button.plans').addClass('active')
-    $('.spotList').find('img').attr('src', '/assets/onikiri.png')
+    $('.spotList').find('img').attr('src', '/assets/okiniiri.png')
